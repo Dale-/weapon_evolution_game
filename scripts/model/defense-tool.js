@@ -1,13 +1,13 @@
-function DefenseToll(name, attackValue) {
+function DefenseTool(name, attackValue) {
   this.name = name;
   this.attackValue = attackValue;
 }
 
-DefenseToll.all = function() {
+DefenseTool.all = function() {
   return [
-  new Weapon('人血',2),
-  new Weapon('血袋',1)
-  ];
+          new DefenseTool('人血',2),
+          new DefenseTool('血袋',1)
+         ];
 };
 
-module.exports = DefenseToll;
+module.exports = DefenseTool;
