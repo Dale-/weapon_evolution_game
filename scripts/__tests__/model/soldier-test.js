@@ -4,6 +4,10 @@ jest.dontMock('../../model/player');
 
 describe('Soldier', function() {
 
+  beforeEach(function() {
+
+  });
+
   describe('.attackPoint', function() {
 
     it('it should be return correct hp', function() {
