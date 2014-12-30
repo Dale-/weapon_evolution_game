@@ -35,7 +35,7 @@ describe('Soldier', function() {
     });
   });
 
-  describe('#getAttackValue', function() {
+  describe('#getHp', function() {
 
     it('it should be return correct hp', function() {
 

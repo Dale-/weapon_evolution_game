@@ -4,6 +4,7 @@ jest.dontMock('../../model/fight');
 jest.dontMock('../../model/soldier');
 jest.dontMock('../../model/weapon');
 jest.dontMock('../../model/common-people');
+jest.dontMock('../../model/defense-tool');
 
 
 describe('Fight', function() {
@@ -24,10 +25,18 @@ describe('Fight', function() {
 
       Fight.fight(soldier, commonPeople);
       var expectText =
-          'Damon用马鞭草攻击了Stefan , Stefan受到了3点伤害 Stefan剩余生命值：3\n\n' +
-          'Stefan攻击了Damon , Damon受到了1点伤害 Damon剩余生命值：5\n\n' +
-          'Damon用马鞭草攻击了Stefan , Stefan受到了3点伤害 Stefan剩余生命值：0\n\n' +
-          'Stefan fail\n\n';
+      'Damon用马鞭草攻击了Stefan , Stefan受到了7点伤害 Stefan剩余生命值：13\n\n'+
+
+      'Stefan攻击了Damon , Damon用人血防御受到了3点伤害 Damon剩余生命值：17\n\n'+
+
+      'Damon用马鞭草攻击了Stefan , Stefan受到了7点伤害 Stefan剩余生命值：6\n\n'+
+
+      'Stefan攻击了Damon , Damon用人血防御受到了3点伤害 Damon剩余生命值：14\n\n'+
+
+      'Damon用马鞭草攻击了Stefan , Stefan受到了7点伤害 Stefan剩余生命值：-1\n\n'+
+
+      'Stefan fail\n\n';
+
 
       expect(console.log).toBeCalledWith(expectText);
     });
