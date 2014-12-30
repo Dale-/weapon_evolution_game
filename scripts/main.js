@@ -3,11 +3,11 @@ var Soldier = require('./model/soldier');
 var CommonPeople = require('./model/common-people');
 
 (function main() {
-  var soldier = new Soldier('Damon', 6, 1, '马鞭草');
+  var soldier = new Soldier('Damon', 20, 5, '马鞭草', '人血');
   if(soldier.weapon !== '') {
     soldier.getAttackValue();
   }
-  var commonPeople = new CommonPeople('Stefan', 6, 1);
+  var commonPeople = new CommonPeople('Stefan', 20, 5);
 
   Fight.fight(soldier, commonPeople);
 })();

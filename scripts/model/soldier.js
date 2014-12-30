@@ -7,6 +7,7 @@ function Soldier(name, hp, attackValue, weapon,defenseTool) {
   Player.call(this, name, hp, attackValue);
   this.weapon = weapon;
   this.defenseTool = defenseTool;
+  this.defenseValue = 0;
 }
 
 Soldier.prototype = Object.create(Player.prototype);
@@ -20,6 +21,7 @@ Soldier.prototype.getAttackValue = function() {
 Soldier.prototype.getHp = function() {
   var myDefenseTool = _.find(DefenseTool.all(),{ 'name': this.defenseTool});
   this.hp += myDefenseTool.attackValue;
+  this.defenseValue = myDefenseTool.attackValue;
 };
 
 module.exports = Soldier;

@@ -18,8 +18,8 @@ describe('Fight', function() {
       var Soldier = require('../../model/soldier');
       var CommonPeople = require('../../model/common-people');
 
-      var soldier = new Soldier('Damon', 6, 1, '马鞭草');
-      var commonPeople = new CommonPeople('Stefan', 6, 1);
+      var soldier = new Soldier('Damon', 20, 5, '马鞭草', '人血');
+      var commonPeople = new CommonPeople('Stefan', 20, 5);
       soldier.getAttackValue();
 
       Fight.fight(soldier, commonPeople);
