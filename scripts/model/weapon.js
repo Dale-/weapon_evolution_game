@@ -9,3 +9,5 @@ Weapon.all = function() {
           new Weapon('阳光',3)
          ];
 };
+
+module.exports = Weapon;

@@ -4,7 +4,7 @@ jest.dontMock('../../model/player');
 
 describe('CommonPeople', function() {
 
-  describe('.attackPoint', function() {
+  describe('#attackPoint', function() {
 
     it('it should be return correct hp', function() {
 
