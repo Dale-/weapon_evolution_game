@@ -1,5 +1,7 @@
 jest.dontMock('../../model/soldier');
+jest.dontMock('../../model/weapon');
 jest.dontMock('../../model/player');
+jest.dontMock('lodash');
 
 
 describe('Soldier', function() {
@@ -21,4 +23,15 @@ describe('Soldier', function() {
       expect(result).toBe(2);
     });
   });
+
+  describe('#getAttackValue', function() {
+
+    it('it should be return correct hp', function() {
+
+      var soldier = new Soldier('Damon', 5, 1, '马鞭草');
+      soldier.getAttackValue();
+      expect(soldier.attackValue).toBe(3);
+    });
+  });
+
 });
