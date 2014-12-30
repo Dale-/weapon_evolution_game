@@ -3,3 +3,7 @@ function Player(name, hp, attackValue) {
   this.hp = hp;
   this.attackValue = attackValue;
 }
+
+Player.prototype.attackPoint = function(player) {
+  player.hp -= this.attackValue;
+};
