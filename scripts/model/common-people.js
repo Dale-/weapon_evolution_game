@@ -5,7 +5,6 @@ function CommonPeople(name, hp, attackValue) {
 }
 
 CommonPeople.prototype = Object.create(Player.prototype);
-
 CommonPeople.prototype.constructor = CommonPeople;
 
 module.exports = CommonPeople;

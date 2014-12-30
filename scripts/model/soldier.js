@@ -1,11 +1,11 @@
 var Player = require('./player');
 
-function Soldier(name, hp, attackValue) {
+function Soldier(name, hp, attackValue, weapon) {
   Player.call(this, name, hp, attackValue);
+  this.weapon = weapon;
 }
 
 Soldier.prototype = Object.create(Player.prototype);
-
 Soldier.prototype.constructor = Soldier;
 
 module.exports = Soldier;
