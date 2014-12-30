@@ -6,4 +6,7 @@ function Player(name, hp, attackValue) {
 
 Player.prototype.attackPoint = function(player) {
   player.hp -= this.attackValue;
+  return player.hp;
 };
+
+module.exports = Player;
