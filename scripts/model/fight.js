@@ -10,14 +10,14 @@ Fight.fight = function(soldier, commonPeople) {
   var info = '';
 
   while(true) {
-    info += soldier.attackPoint(commonPeople);
+    info += soldier.attack(commonPeople);
     if(commonPeople.hp <= 0) {
       info += 'Stefan fail\n\n';
       break;
     }
 
     soldier.getHp();
-    info += commonPeople.attackPoint(soldier);
+    info += commonPeople.attack(soldier);
 
     // info += commonPeople.name + '攻击了' + soldier.name + ' , ' +
     //         soldier.name + defenseToolText + '受到了' +

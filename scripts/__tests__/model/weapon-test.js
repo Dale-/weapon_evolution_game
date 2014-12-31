@@ -10,8 +10,20 @@ describe('Weapon', function() {
       var Weapon = require('../../model/weapon');
       var result = Weapon.all();
 
-      expect(result[0].name).toBe('马鞭草');
-      expect(result[1].attackValue).toBe(3);
+      expect(result[0].name).toBe('利剑');
     });
   });
+
+  describe('#getAttackValue', function() {
+
+    it('it should be return correct attackValue', function() {
+
+      var Weapon = require('../../model/weapon');
+      var weapon = new Weapon('利剑', ['致命一击'], 2);
+      var result = weapon.getAttackValue();
+
+      expect(result).toBe(6);
+    });
+  });
+
 });
