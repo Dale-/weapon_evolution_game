@@ -3,13 +3,13 @@ var Player = require('./player.js');
 var Weapon = require('./weapon.js');
 var DefenseTool = require('./defense-tool.js');
 
-function Soldier(name, hp, attackValue, weapon, character, defenseTool) {
+function Soldier(name, hp, attackValue, weapon) {
   Player.call(this, name, hp, attackValue);
   this.name = '战士' + name;
   this.weapon = weapon;
-  this.character = character;
-  this.defenseTool = defenseTool;
-  this.defenseValue = 0;
+  // this.character = character;
+  // this.defenseTool = defenseTool;
+  // this.defenseValue = 0;
 }
 
 Soldier.prototype = Object.create(Player.prototype);
@@ -29,16 +29,9 @@ Soldier.prototype.attack = function(commonPeople) {
     weaponText = '用' + this.weapon;
   }
 
-  //console.log(commonPeople.name+'--------');
-
-  // var defenseToolText = '';
-  // if(this.defenseTool !== '') {
-  //   defenseToolText = '用' + this.defenseTool + '防御';
-  //}
-
   var info = this.name + weaponText + '攻击了' + commonPeople.name + ' , ' +
              characterText + commonPeople.name + '受到了' +
-             (this.attackValue - commonPeople.defenseValue) + '点伤害 ' +
+             (this.attackValue ) + '点伤害 ' +
              commonPeople.name +'剩余生命值：' + commonPeople.hp + '\n\n';
 
   return info;
@@ -50,10 +43,11 @@ Soldier.prototype.getAttackValue = function() {
   this.attackValue += myWeapon.attackValue;
 };
 
-Soldier.prototype.getHp = function() {
-  var myDefenseTool = _.find(DefenseTool.all(),{ 'name': this.defenseTool});
-  this.hp += myDefenseTool.attackValue;
-  this.defenseValue = myDefenseTool.attackValue;
-};
+// Soldier.prototype.getHp = function() {
+//   console.log(this.defenseTool);
+//   var myDefenseTool = _.find(DefenseTool.all(),{ 'name': this.defenseTool});
+//   this.hp += myDefenseTool.attackValue;
+//   this.defenseValue = myDefenseTool.attackValue;
+// };
 
 module.exports = Soldier;

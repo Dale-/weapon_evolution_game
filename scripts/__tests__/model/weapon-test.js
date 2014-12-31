@@ -19,7 +19,7 @@ describe('Weapon', function() {
     it('it should be return correct attackValue', function() {
 
       var Weapon = require('../../model/weapon');
-      var weapon = new Weapon('利剑', ['致命一击'], 2);
+      var weapon = new Weapon('利剑', 1, ['致命一击'], 1);
       var result = weapon.getAttackValue();
 
       expect(result).toBe(6);

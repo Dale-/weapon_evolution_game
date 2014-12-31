@@ -19,10 +19,6 @@ Fight.fight = function(soldier, commonPeople) {
     soldier.getHp();
     info += commonPeople.attack(soldier);
 
-    // info += commonPeople.name + '攻击了' + soldier.name + ' , ' +
-    //         soldier.name + defenseToolText + '受到了' +
-    //         (commonPeople.attackValue - soldier.defenseValue) + '点伤害 ' +
-    //         soldier.name +'剩余生命值：' + soldier.hp + '\n\n';
     if(soldier.hp <= 0) {
       info += 'Damon fail\n\n';
       break;
