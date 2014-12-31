@@ -1,4 +1,4 @@
-jest.dontMock('../../model/weapon');
+jest.dontMock('../../model/weapon.js');
 
 
 describe('Weapon', function() {

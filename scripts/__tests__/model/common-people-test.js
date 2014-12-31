@@ -1,5 +1,5 @@
-jest.dontMock('../../model/common-people');
-jest.dontMock('../../model/player');
+jest.dontMock('../../model/common-people.js');
+jest.dontMock('../../model/player.js');
 
 
 describe('CommonPeople', function() {

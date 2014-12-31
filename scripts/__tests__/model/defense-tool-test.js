@@ -1,4 +1,4 @@
-jest.dontMock('../../model/defense-tool');
+jest.dontMock('../../model/defense-tool.js');
 
 
 describe('DefenseTool', function() {

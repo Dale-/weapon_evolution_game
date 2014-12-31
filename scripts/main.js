@@ -1,6 +1,6 @@
-var Fight = require('./model/fight');
-var Soldier = require('./model/soldier');
-var CommonPeople = require('./model/common-people');
+var Fight = require('./model/fight.js');
+var Soldier = require('./model/soldier.js');
+var CommonPeople = require('./model/common-people.js');
 
 (function main() {
   var soldier = new Soldier('Damon', 20, 5, '马鞭草', '人血');

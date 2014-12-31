@@ -1,7 +1,7 @@
-jest.dontMock('../../model/soldier');
-jest.dontMock('../../model/weapon');
-jest.dontMock('../../model/defense-tool');
-jest.dontMock('../../model/player');
+jest.dontMock('../../model/soldier.js');
+jest.dontMock('../../model/weapon.js');
+jest.dontMock('../../model/defense-tool.js');
+jest.dontMock('../../model/player.js');
 jest.dontMock('lodash');
 
 
