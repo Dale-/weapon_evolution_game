@@ -1,15 +1,17 @@
-function Skill(name, type, probability) {
+function Skill(name, times, blood, info, probability) {
   this.name = name;
-  this.type = type;
+  this.times = times;
+  this.blood = blood;
+  this.info = info;
   this.probability = probability;
 }
 
 Skill.all = function() {
   return [
-          new Skill('毒性',times, 0.2),
-          new Skill('火焰',times, 0.2),
-          new Skill('冰冻',blood, 0.2),
-          new Skill('击晕',blood, 0.2),
-          new Skill('致命一击',injury, 0.2)
+          new Skill('毒性', 0, 2, '中毒了，', 0.2),
+          new Skill('火焰', 0, 1, '着火了，', 0.2),
+          new Skill('冰冻', 2, 0, '冻僵了，', 0.2),
+          new Skill('击晕', 2, 0, '晕倒了，', 0.2),
+          new Skill('致命一击', 0, 0, '发动了致命一击，', 0.2)
          ];
 };
