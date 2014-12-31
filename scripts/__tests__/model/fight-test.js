@@ -25,15 +25,15 @@ describe('Fight', function() {
 
       Fight.fight(soldier, commonPeople);
       var expectText =
-      'Damon用马鞭草攻击了Stefan , Stefan受到了7点伤害 Stefan剩余生命值：13\n\n'+
+      '战士Damon用马鞭草攻击了普通人Stefan , 普通人Stefan受到了7点伤害 普通人Stefan剩余生命值：13\n\n'+
 
-      'Stefan攻击了Damon , Damon用人血防御受到了3点伤害 Damon剩余生命值：17\n\n'+
+      '普通人Stefan攻击了战士Damon , 战士Damon用人血防御受到了3点伤害 战士Damon剩余生命值：17\n\n'+
 
-      'Damon用马鞭草攻击了Stefan , Stefan受到了7点伤害 Stefan剩余生命值：6\n\n'+
+      '战士Damon用马鞭草攻击了普通人Stefan , 普通人Stefan受到了7点伤害 普通人Stefan剩余生命值：6\n\n'+
 
-      'Stefan攻击了Damon , Damon用人血防御受到了3点伤害 Damon剩余生命值：14\n\n'+
+      '普通人Stefan攻击了战士Damon , 战士Damon用人血防御受到了3点伤害 战士Damon剩余生命值：14\n\n'+
 
-      'Damon用马鞭草攻击了Stefan , Stefan受到了7点伤害 Stefan剩余生命值：-1\n\n'+
+      '战士Damon用马鞭草攻击了普通人Stefan , 普通人Stefan受到了7点伤害 普通人Stefan剩余生命值：-1\n\n'+
 
       'Stefan fail\n\n';
 

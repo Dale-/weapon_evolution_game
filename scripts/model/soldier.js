@@ -5,6 +5,7 @@ var DefenseTool = require('./defense-tool');
 
 function Soldier(name, hp, attackValue, weapon,defenseTool) {
   Player.call(this, name, hp, attackValue);
+  this.name = '战士' + this.name;
   this.weapon = weapon;
   this.defenseTool = defenseTool;
   this.defenseValue = 0;
