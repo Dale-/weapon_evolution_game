@@ -39,36 +39,6 @@ Soldier.prototype.attack = function(commonPeople) {
   return info;
 };
 
-Soldier.prototype.attackText = function(commonPeople, weapon, skill, value){
-
-  console.log(weapon);
-  console.log(skill);
-
-  var info = '';
-
-  commonPeople.hp -= value;
-
-  if(weapon.skill === '毒性' || weapon.skill === '火焰') {
-
-    info = '战士' + this.name + '用' + weapon.name + '攻击了普通人' +
-           commonPeople.name + '，' + commonPeople.name + '受到了' +
-           value + '点伤害，' + commonPeople.name + skill.info +
-           commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
-
-    commonPeople.hp -= skill.blood ;
-
-    info += commonPeople.name + '受到' + skill.blood + '点' +
-            skill.name + '伤害,' + commonPeople.name +
-            '剩余生命：' + commonPeople.hp;
-
-  } else if(weapon.skill === '致命一击') {
-
-  } else {
-
-  }
-  return info;
-};
-
 
 // Soldier.prototype.getHp = function() {
 //   console.log(this.defenseTool);

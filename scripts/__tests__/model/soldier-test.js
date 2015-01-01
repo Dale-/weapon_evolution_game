@@ -17,26 +17,6 @@ describe('Soldier', function() {
     Skill = require('../../model/skill');
   });
 
-  // describe('#attack', function() {
-  //
-  //   it('it should be return correct hp', function() {
-  //
-  //     var soldier = new Soldier('张三', 50, 2, '优质毒剑');
-  //     // soldier.attackValue = weapon.getAttackValue();
-  //     // weapon.skill.blood = jest.genMockFn();
-  //     // weapon.skill.blood.mockReturnValue(2);
-  //     var result = soldier.attack({name: '李四', hp: 50, attackValue: 1});
-  //
-  //     // soldier.attackValue -= weapon.getAttackValue();
-  //
-  //     var expectText = '战士张三用优质毒剑攻击了普通人李四，' +
-  //                      '李四受到了6点伤害，' +
-  //                      '李四中毒了，李四剩余生命：44';
-  //
-  //     expect(result).toBe(expectText);
-  //   });
-  // });
-
   describe('#attackText', function() {
 
     it('it should be return correct hp', function() {
@@ -59,7 +39,7 @@ describe('Soldier', function() {
                                   skill: skill
                                 });
 
-      var result = soldier.attackText(
+      var result = soldier.attack(
         {name: '李四', hp: 50, attackValue: 1},
         {name: '优质毒剑', natureValue: 4, skill: '毒性'},
         {name: '毒性', times: 0, blood: 2, info: '中毒了，', probability: 0.2 },
