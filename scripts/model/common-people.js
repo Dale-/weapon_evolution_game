@@ -18,4 +18,15 @@ CommonPeople.prototype.attack = function(soldier) {
   return info;
 };
 
+CommonPeople.prototype.attackText = function(soldier) {
+  soldier.hp -= this.attackValue;
+
+  var info = this.name + '攻击了' + soldier.name + ' , ' +
+  soldier.name  + '受到了' +
+  (this.attackValue - soldier.defenseValue) + '点伤害 ' +
+  soldier.name +'剩余生命值：' + soldier.hp + '\n\n';
+
+  return info;
+};
+
 module.exports = CommonPeople;

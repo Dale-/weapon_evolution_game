@@ -15,3 +15,5 @@ Skill.all = function() {
           new Skill('致命一击', 0, 0, '发动了致命一击，', 0.2)
          ];
 };
+
+module.exports = Skill;

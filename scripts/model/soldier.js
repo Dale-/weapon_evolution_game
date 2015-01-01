@@ -1,7 +1,8 @@
 var _ = require('lodash');
+var Skill = require('./skill.js');
 var Player = require('./player.js');
 var Weapon = require('./weapon.js');
-var Skill = require('./skill.js');
+
 
 function Soldier(name, hp, attackValue, weaponName) {
   Player.call(this, name, hp, attackValue);
@@ -15,25 +16,6 @@ Soldier.prototype = Object.create(Player.prototype);
 Soldier.prototype.constructor = Soldier;
 
 Soldier.prototype.attack = function(commonPeople) {
-
-  var info = '';
-
-  // commonPeople.hp -= this.attackValue;
-  //
-  // var characterText = '';
-  // if(this.character !== '') {
-  //   characterText = this.name + '发动了' + this.character;
-  // }
-  //
-  // var weaponText = '';
-  // if(this.weapon !== '') {
-  //   weaponText = '用' + this.weapon;
-  // }
-  //
-  // var info = this.name + weaponText + '攻击了' + commonPeople.name + ' , ' +
-  //            characterText + commonPeople.name + '受到了' +
-  //            (this.attackValue ) + '点伤害 ' +
-  //            commonPeople.name +'剩余生命值：' + commonPeople.hp + '\n\n';
 
   var weapons = Weapon.all();
   var weapon;
@@ -50,32 +32,43 @@ Soldier.prototype.attack = function(commonPeople) {
       skill = skills[x];
     }
   }
-  console.log(skills);
+
   var value = this.attackValue + weapon.natureValue;
+  info = this.attackText(commonPeople, weapon, skill, value);
+
+  return info;
+};
+
+Soldier.prototype.attackText = function(commonPeople, weapon, skill, value){
+
+  console.log(weapon);
+  console.log(skill);
+
+  var info = '';
+
+  commonPeople.hp -= value;
+
   if(weapon.skill === '毒性' || weapon.skill === '火焰') {
 
     info = '战士' + this.name + '用' + weapon.name + '攻击了普通人' +
-           commonPeople.name + ',' + commonPeople.name + '受到了' +
-           value + '点伤害' + commonPeople.name +
-           '剩余生命：' + (commonPeople.attackValue - value);
+           commonPeople.name + '，' + commonPeople.name + '受到了' +
+           value + '点伤害，' + commonPeople.name + skill.info +
+           commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
 
-    commonPeople.attackValue -= (value + skillBlood) ;
+    commonPeople.hp -= skill.blood ;
 
+    info += commonPeople.name + '受到' + skill.blood + '点' +
+            skill.name + '伤害,' + commonPeople.name +
+            '剩余生命：' + commonPeople.hp;
 
   } else if(weapon.skill === '致命一击') {
 
   } else {
 
   }
-
   return info;
 };
 
-// Soldier.prototype.getAttackValue = function() {
-//   console.log(this.weapon);
-//   var myWeapon = _.find(Weapon.all(),{ 'name': this.weapon});
-//   this.attackValue += myWeapon.attackValue;
-// };
 
 // Soldier.prototype.getHp = function() {
 //   console.log(this.defenseTool);
