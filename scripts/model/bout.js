@@ -90,7 +90,7 @@ Bout.prototype.boutFrozen = function() {
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
   this.player.hp -= value;
 
-  if(this.times === 1) {
+  if(this.times%3 === 1) {
 
     info += '战士' + this.getSoldierName() + '用' +
             this.getSoldierWeaponName() + '攻击了普通人' +
@@ -107,12 +107,12 @@ Bout.prototype.boutFrozen = function() {
     return info;
   }
 
-  if(this.times === 1) {
+  if(this.times%3 === 1) {
     info += this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
             this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n' +
             '//' + this.getPlayerName() +'进攻\n';
 
-  }else if(this.times === 3) {
+  }else if(this.times%3 === 0) {
     info += this.getPlayerName() + '冻得直哆嗦，没有击中' +
             this.getSoldierName() + '\n';
   } else {
