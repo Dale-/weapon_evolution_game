@@ -4,6 +4,54 @@ function Bout(player, soldier) {
   this.times = 1;
 }
 
+Bout.prototype.boutBlood = function() {
+  var info = '';
+
+  var value = this.getSoldierAP() + this.soldier.getWeaponAP();
+  this.player.hp -= (this.getSoldierAP() + this.soldier.getWeaponAP());
+
+  if(this.times === 1){
+
+    info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
+            '攻击了普通人' + this.getPlayerName() + '，' +
+            this.getPlayerName() + '受到了' + value + '点伤害，' +
+            this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
+            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+  } else {
+    info += '//' + this.getSoldierName() + '进攻\n';
+  }
+
+  if(this.getPlayerHP() <= 0) {
+    info += this.getPlayerName() + '被打死了';
+    return info;
+  }
+
+  this.player.hp -= this.getSoldierWeaponSkillBlood() ;
+
+  info += this.getPlayerName() + '受到' +
+          this.getSoldierWeaponSkillBlood() + '点' +
+          this.getSoldierWeaponSkillName() + '伤害,' +
+          this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+
+  if(this.getPlayerHP() <= 0) {
+    info += this.getPlayerName() + '被打死了';
+    return info;
+  }
+
+  this.soldier.hp -= this.getPlayerAP();
+  info += '//' + this.getPlayerName() + '进攻\n';
+
+  if(this.getSoldierHP() <= 0) {
+    info += this.getSoldierName() + '被打死了';
+    return info;
+  }
+
+  return info;
+};
+
+Bout.prototype.boutCtriticalStrike = function() {
+};
+
 Bout.prototype.getSoldierAP = function() {
   return this.soldier.attackPoint;
 };
@@ -42,53 +90,6 @@ Bout.prototype.getSoldierWeaponSkillName = function() {
 
 Bout.prototype.getSoldierWeaponSkillBlood = function() {
   return this.soldier.getWeaponSkillBlood();
-};
-
-Bout.prototype.boutBlood = function() {
-  var info = '';
-
-  var value = this.getSoldierAP() + this.soldier.getWeaponAP();
-  this.player.hp -= (this.getSoldierAP() + this.soldier.getWeaponAP());
-
-  if(this.times === 1){
-
-    info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
-            '攻击了普通人' + this.getPlayerName() + '，' +
-            this.getPlayerName() + '受到了' + value + '点伤害，' +
-            this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
-            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
-  } else {
-    info += '//' + this.getSoldierName() + '进攻\n';
-  }
-
-  if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
-    return info;
-  }
-
-  this.player.hp -= this.getSoldierWeaponSkillBlood() ;
-
-  info += this.getPlayerName() + '受到' +
-          this.getSoldierWeaponSkillBlood() + '点' +
-          this.getSoldierWeaponSkillName() + '伤害,' +
-          this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
-
-  if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
-    return info;
-  }
-
-  this.soldier.hp -= this.getPlayerAP();
-  info += '//' + this.getPlayerName() + '进攻\n';
-
-
-
-  if(this.getSoldierHP() <= 0) {
-    info += this.getSoldierName() + '被打死了';
-    return info;
-  }
-
-  return info;
 };
 
 module.exports = Bout;
