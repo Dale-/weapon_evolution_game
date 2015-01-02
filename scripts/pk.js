@@ -12,24 +12,23 @@ var Skill = require('./model/skill');
 
   var info = '';
 
-  if(bout.getSoldierWeaponName() === '优质毒剑' ||
-     bout.getSoldierWeaponName() === '火焰剑') {
-     while(true) {
-       info = bout.boutBlood();
-       console.log(info);
-       if(info.search('被打死了') != -1) {
-         break;
-       }
-       bout.times ++;
-     }
-  } else if(bout.getSoldierWeaponName() === '利剑') {
-    while(true) {
+  while(true) {
+
+    if(bout.getSoldierWeaponName() === '优质毒剑' ||
+        bout.getSoldierWeaponName() === '火焰剑') {
+
+          info = bout.boutBlood();
+
+    }else if(bout.getSoldierWeaponName() === '利剑') {
+
       info = bout.boutCtriticalStrike();
-      console.log(info);
-      if(info.search('被打死了') != -1) {
-        break;
-      }
-      bout.times ++;
     }
+    console.log(info);
+
+    if(info.search('被打死了') != -1) {
+      break;
+    }
+    bout.times ++;
   }
+
 })();
