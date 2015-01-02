@@ -19,9 +19,6 @@ describe('Soldier', function() {
       var skill = new Skill('毒性', 0, 2, '中毒了，', 0.2);
       var weapon = new Weapon('优质毒剑', 4, skill);
 
-      // var getWeaponSkillInfo = jest.genMockFn();
-      // getWeaponSkillInfo.mockReturnValue('中毒了，');
-
       var soldier = new Soldier('张三', 50, 2, weapon);
       var result = soldier.attack({name: '李四', hp: 50, attackValue: 1});
 
@@ -33,25 +30,5 @@ describe('Soldier', function() {
       expect(result).toBe(expectText);
     });
   });
-
-  // describe('#getAttackValue', function() {
-  //
-  //   it('it should be return correct hp', function() {
-  //
-  //     var soldier = new Soldier('Damon', 5, 1, '马鞭草');
-  //     soldier.getAttackValue();
-  //     expect(soldier.attackValue).toBe(3);
-  //   });
-  // });
-
-  // describe('#getHp', function() {
-  //
-  //   it('it should be return correct hp', function() {
-  //
-  //     var soldier = new Soldier('Damon', 5, 1, '马鞭草', '人血');
-  //     soldier.getHp();
-  //     expect(soldier.hp).toBe(7);
-  //   });
-  // });
 
 });

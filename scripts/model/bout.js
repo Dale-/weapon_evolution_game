@@ -63,7 +63,8 @@ Bout.prototype.boutCtriticalStrike = function() {
             this.getPlayerHP() + '\n';
 
   } else {
-    info += '//' + this.getSoldierName() + '进攻\n';
+    info += '//' + this.getSoldierName() + '进攻\t' +
+            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
   }
 
   if(this.getPlayerHP() <= 0) {
