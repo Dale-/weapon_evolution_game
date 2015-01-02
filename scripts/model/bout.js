@@ -8,8 +8,16 @@ Bout.prototype.getSoldierAP = function() {
   return this.soldier.attackPoint;
 };
 
+Bout.prototype.getPlayerAP = function() {
+  return this.player.attackPoint;
+};
+
 Bout.prototype.getPlayerHP = function() {
   return this.player.hp;
+};
+
+Bout.prototype.getSoldierHP = function() {
+  return this.soldier.hp;
 };
 
 Bout.prototype.getSoldierName = function() {
@@ -39,8 +47,6 @@ Bout.prototype.getSoldierWeaponSkillBlood = function() {
 Bout.prototype.boutBlood = function() {
   var info = '';
 
-
-
   var value = this.getSoldierAP() + this.soldier.getWeaponAP();
   this.player.hp -= (this.getSoldierAP() + this.soldier.getWeaponAP());
 
@@ -55,6 +61,11 @@ Bout.prototype.boutBlood = function() {
     info += '//' + this.getSoldierName() + '进攻\n';
   }
 
+  if(this.getPlayerHP() <= 0) {
+    info += this.getPlayerName() + '被打死了';
+    return info;
+  }
+
   this.player.hp -= this.getSoldierWeaponSkillBlood() ;
 
   info += this.getPlayerName() + '受到' +
@@ -62,8 +73,20 @@ Bout.prototype.boutBlood = function() {
           this.getSoldierWeaponSkillName() + '伤害,' +
           this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
 
-  this.soldier.hp -= this.getPlayerHP();
+  if(this.getPlayerHP() <= 0) {
+    info += this.getPlayerName() + '被打死了';
+    return info;
+  }
+
+  this.soldier.hp -= this.getPlayerAP();
   info += '//' + this.getPlayerName() + '进攻\n';
+
+
+
+  if(this.getSoldierHP() <= 0) {
+    info += this.getSoldierName() + '被打死了';
+    return info;
+  }
 
   return info;
 };
