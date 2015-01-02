@@ -51,6 +51,8 @@ Bout.prototype.boutBlood = function() {
             this.getPlayerName() + '受到了' + value + '点伤害，' +
             this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
             this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+  } else {
+    info += '//' + this.getSoldierName() + '进攻\n';
   }
 
   this.player.hp -= this.getSoldierWeaponSkillBlood() ;
