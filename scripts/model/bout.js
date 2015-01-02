@@ -64,14 +64,9 @@ Bout.prototype.boutCtriticalStrike = function() {
             value + '点伤害' + '，' + this.getPlayerName() + '剩余生命：' +
             this.getPlayerHP() + '\n';
 
-    this.dizzyTimes ++;
-
   } else {
-
     info += '//' + this.getSoldierName() + '进攻\t' +
             this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
-
-    this.dizzyTimes = this.dizzyTimes > 0 ? this.dizzyTimes-- : this.dizzyTimes;
   }
 
   if(this.getPlayerHP() <= 0) {
@@ -79,15 +74,9 @@ Bout.prototype.boutCtriticalStrike = function() {
     return info;
   }
 
-  if(this.dizzyTimes > 0) {
+  this.soldier.hp -= this.getPlayerAP();
 
-    info += this.getPlayerName() +'晕倒了，无法攻击, 眩晕还剩：' +
-            this.dizzyTimes + '轮';
-  } else {
-
-    this.soldier.hp -= this.getPlayerAP();
-    info += '//' + this.getPlayerName() + '进攻\n';
-  }
+  info += '//' + this.getPlayerName() + '进攻\n';
 
   if(this.getSoldierHP() <= 0) {
     info += this.getSoldierName() + '被打死了';
@@ -147,17 +136,20 @@ Bout.prototype.boutDizzy = function() {
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
   this.player.hp -= value;
 
-  if(this.times === 1 || this.times === 2) {
+  if(this.times === 1 || this.times === 2){
 
-    info += '战士' + this.getSoldierName() + '用' +
-            this.getSoldierWeaponName() + '攻击了普通人' +
-            this.getPlayerName() + '，' + this.getPlayerName() +
-            '受到了' + value + '点伤害，' + this.getPlayerName() +
+    info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
+            '攻击了普通人' + this.getPlayerName() + '，' +this.getPlayerName() +
+            '受到了' + value + '点伤害' + '，' + this.getPlayerName() +
             this.getSoldierWeaponSkillInfo() + this.getPlayerName() +
             '剩余生命：' + this.getPlayerHP() + '\n';
 
+    this.dizzyTimes ++;
+
   } else {
+
     info += '//' + this.getSoldierName() + '进攻\n';
+    this.dizzyTimes = this.dizzyTimes > 0 ? this.dizzyTimes-- : this.dizzyTimes;
   }
 
   if(this.getPlayerHP() <= 0) {
@@ -165,15 +157,12 @@ Bout.prototype.boutDizzy = function() {
     return info;
   }
 
-  if(this.times%3 === 1) {
-    info += this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
-    this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n' +
-    '//' + this.getPlayerName() +'进攻\n';
+  if(this.dizzyTimes > 0) {
 
-  }else if(this.times%3 === 0) {
-    info += this.getPlayerName() + '冻得直哆嗦，没有击中' +
-    this.getSoldierName() + '\n';
+    info += this.getPlayerName() +'晕倒了，无法攻击, 眩晕还剩：' +
+    this.dizzyTimes + '轮';
   } else {
+
     this.soldier.hp -= this.getPlayerAP();
     info += '//' + this.getPlayerName() + '进攻\n';
   }
