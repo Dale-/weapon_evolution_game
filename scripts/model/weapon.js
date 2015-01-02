@@ -1,3 +1,5 @@
+var Skill = require('./skill.js');
+
 function Weapon(name, attackPoint, skill) {
   this.name = name;
   this.attackPoint = attackPoint;
@@ -6,11 +8,11 @@ function Weapon(name, attackPoint, skill) {
 
 Weapon.all = function() {
   return [
-          new Weapon('利剑', 3, '致命一击'),
-          new Weapon('火焰剑', 2, '火焰'),
-          new Weapon('晕锤', 4, '击晕'),
-          new Weapon('寒冰剑', 4, '冰冻'),
-          new Weapon('优质毒剑', 4, '毒性'),
+          new Weapon('利剑', 3, Skill.all[4]),
+          new Weapon('火焰剑', 2, Skill.all[1]),
+          new Weapon('晕锤', 4, Skill.all[3]),
+          new Weapon('寒冰剑', 4, Skill.all[2]),
+          new Weapon('优质毒剑', 4, Skill.all[0]),
          ];
 };
 
@@ -29,17 +31,5 @@ Weapon.prototype.getSkillBlood = function() {
 Weapon.prototype.getSkillName = function() {
   return this.skill.name;
 };
-
-// Weapon.prototype.getAttackValue = function() {
-//
-//   switch(this.characters[0]) {
-//     case '致命一击' : {
-//                       this.attackValue += this.value;
-//                       this.attackValue *= 3;
-//                       break;
-//                      }
-//   }
-//   return this.attackValue;
-// };
 
 module.exports = Weapon;

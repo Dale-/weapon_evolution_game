@@ -45,7 +45,6 @@ Bout.prototype.boutBlood = function() {
     info += this.getSoldierName() + '被打死了';
     return info;
   }
-
   return info;
 };
 
@@ -55,15 +54,31 @@ Bout.prototype.boutCtriticalStrike = function() {
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp()) * 3;
   this.player.hp -= value;
 
-  info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
-          '攻击了普通人' + this.getPlayerName() + '，' +this.getSoldierName() +
-          this.getSoldierWeaponSkillInfo() + this.getPlayerName() + '受到了' +
-          value + '点伤害' + '，' + this.getPlayerName() + '剩余生命：' +
-          this.getPlayerHP() + '\n';
+  if(this.times === 1){
+
+    info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
+            '攻击了普通人' + this.getPlayerName() + '，' +this.getSoldierName() +
+            this.getSoldierWeaponSkillInfo() + this.getPlayerName() + '受到了' +
+            value + '点伤害' + '，' + this.getPlayerName() + '剩余生命：' +
+            this.getPlayerHP() + '\n';
+
+  } else {
+    info += '//' + this.getSoldierName() + '进攻\n';
+  }
+
+  if(this.getPlayerHP() <= 0) {
+    info += this.getPlayerName() + '被打死了';
+    return info;
+  }
 
   this.soldier.hp -= this.getPlayerAP();
 
   info += '//' + this.getPlayerName() + '进攻\n';
+
+  if(this.getSoldierHP() <= 0) {
+    info += this.getSoldierName() + '被打死了';
+    return info;
+  }
 
   return info;
 };
