@@ -1,6 +1,6 @@
 function Weapon(name, natureValue, skill) {
   this.name = name;
-  this.natureValue = natureValue;
+  this.attackPoint = attackPoint;
   this.skill = skill;
 }
 

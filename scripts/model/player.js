@@ -1,10 +1,10 @@
 var Weapon = require('./weapon.js');
 var DefenseTool = require('./defense-tool.js');
 
-function Player(name, hp, attackValue) {
+function Player(name, hp, attackPoint) {
   this.name = name;
   this.hp = hp;
-  this.attackValue = attackValue;
+  this.attackPoint = attackPoint;
 }
 
 Player.prototype.attack = function(player) {

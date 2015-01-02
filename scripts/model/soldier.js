@@ -4,8 +4,8 @@ var Player = require('./player.js');
 var Weapon = require('./weapon.js');
 
 
-function Soldier(name, hp, attackValue, weapon) {
-  Player.call(this, name, hp, attackValue);
+function Soldier(name, hp, attackPoint, weapon) {
+  Player.call(this, name, hp, attackPoint);
   this.weapon = weapon;
   // this.character = character;
   // this.defenseTool = defenseTool;
@@ -19,11 +19,13 @@ Soldier.prototype.attack = function(commonPeople) {
 
   var value = this.attackValue + weapon.natureValue;
 
+  commonPeople.hp -= (this.attackPoint + weapon.natureValue);
+
   if(weapon.skill === '毒性' || weapon.skill === '火焰') {
 
     info = '战士' + this.name + '用' + weapon.name + '攻击了普通人' +
     commonPeople.name + '，' + commonPeople.name + '受到了' +
-    value + '点伤害，' + commonPeople.name + weapon.skill.info +
+    value + '点伤害，' + commonPeople.name + weapon.getSkillInfo() +
     commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
 
     commonPeople.hp -= skill.blood ;
