@@ -45,6 +45,7 @@ Bout.prototype.boutBlood = function() {
     info += this.getSoldierName() + '被打死了';
     return info;
   }
+  this.times ++;
   return info;
 };
 
@@ -80,7 +81,7 @@ Bout.prototype.boutCtriticalStrike = function() {
     info += this.getSoldierName() + '被打死了';
     return info;
   }
-
+  this.times ++;
   return info;
 };
 
@@ -124,7 +125,7 @@ Bout.prototype.boutFrozen = function() {
     info += this.getSoldierName() + '被打死了';
     return info;
   }
-
+  this.times ++;
   return info;
 };
 

@@ -5,7 +5,7 @@ var Weapon = require('./model/weapon');
 var Skill = require('./model/skill');
 
 (function PK() {
-  var weapon = Weapon.all()[0];
+  var weapon = Weapon.all()[3];
   var soldier = new Soldier('张三', 50, 2, weapon);
   var player = new Player('李四', 50, 1);
   var bout = new Bout(player, soldier);
@@ -19,16 +19,17 @@ var Skill = require('./model/skill');
 
           info = bout.boutBlood();
 
-    }else if(bout.getSoldierWeaponName() === '利剑') {
+    } else if(bout.getSoldierWeaponName() === '利剑') {
 
       info = bout.boutCtriticalStrike();
+    } else if(bout.getSoldierWeaponName() === '寒冰剑') {
+      info = bout.boutFrozen();
     }
     console.log(info);
 
     if(info.search('被打死了') != -1) {
       break;
     }
-    bout.times ++;
   }
 
 })();
