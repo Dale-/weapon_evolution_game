@@ -2,6 +2,7 @@ function Bout(player, soldier) {
   this.player = player;
   this.soldier = soldier;
   this.times = 1;
+  this.dizzyTimes = 1;
 }
 
 Bout.prototype.boutBlood = function() {
