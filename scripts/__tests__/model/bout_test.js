@@ -68,7 +68,6 @@ describe('Bout', function() {
 
       var expectText = '战士张三用寒冰剑攻击了普通人李四，李四受到了6点伤害，' +
                        '李四冻僵了，李四剩余生命：24\n//李四进攻\n';
-
       expect(result).toBe(expectText);
     });
 
@@ -77,14 +76,24 @@ describe('Bout', function() {
       var soldier = new Soldier('张三', 30, 2, Weapon.all()[3]);
       var player = new Player('李四', 30, 1);
       var bout = new Bout(player, soldier);
+
       bout.times = 2;
       var result = bout.boutFrozen();
 
       var expectText = '//张三进攻\t李四剩余生命：24\n//李四进攻\n';
-      //  '//李四进攻\n\n' +
-      //  '//张三进攻\n//李四进攻\n\n//张三进攻' +
-      //  '李四冻得直哆嗦，没有击中张三\n//张三进攻';
+      expect(result).toBe(expectText);
+    });
 
+    it('it should be return correct string', function() {
+
+      var soldier = new Soldier('张三', 30, 2, Weapon.all()[3]);
+      var player = new Player('李四', 30, 1);
+      var bout = new Bout(player, soldier);
+
+      bout.times = 3;
+      var result = bout.boutFrozen();
+
+      var expectText = '//张三进攻\t李四剩余生命：24\n李四冻得直哆嗦，没有击中张三\n';
       expect(result).toBe(expectText);
     });
   });
