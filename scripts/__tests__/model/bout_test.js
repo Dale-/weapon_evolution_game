@@ -113,61 +113,18 @@ describe('Bout', function() {
       expect(result).toBe(expectText);
     });
 
-    // it('it should be return correct string when times equal two', function() {
-    //
-    //   var soldier = new Soldier('张三', 30, 2, Weapon.all()[2]);
-    //   var player = new Player('李四', 30, 1);
-    //   var bout = new Bout(player, soldier);
-    //
-    //   bout.times = 2;
-    //   var result = bout.boutDizzy();
-    //
-    //   var expectText = '战士张三用晕锤攻击了普通人李四，李四受到了6点伤害，' +
-    //                    '李四晕倒了，李四剩余生命：24\n' +
-    //                    '李四晕倒了，无法攻击, 眩晕还剩：2轮';
-    //   expect(result).toBe(expectText);
-    // });
-    //
-    // it('it should be return correct string when times equal three', function() {
-    //
-    //   var soldier = new Soldier('张三', 30, 2, Weapon.all()[2]);
-    //   var player = new Player('李四', 30, 1);
-    //   var bout = new Bout(player, soldier);
-    //
-    //   bout.times = 3;
-    //   var result = bout.boutDizzy();
-    //
-    //   var expectText = '//张三进攻\n' +
-    //                    '李四晕倒了，无法攻击，眩晕还剩：1轮';
-    //   expect(result).toBe(expectText);
-    // });
-    //
-    // it('it should be return correct string  when times equal four', function() {
-    //
-    //   var soldier = new Soldier('张三', 30, 2, Weapon.all()[2]);
-    //   var player = new Player('李四', 30, 1);
-    //   var bout = new Bout(player, soldier);
-    //
-    //   bout.times = 4;
-    //   var result = bout.boutDizzy();
-    //
-    //   var expectText = '//张三进攻\n' +
-    //                    '李四晕倒了，无法攻击，眩晕还剩：0轮';
-    //   expect(result).toBe(expectText);
-    // });
-    //
-    // it('it should be return correct string when times equal five', function() {
-    //
-    //   var soldier = new Soldier('张三', 30, 2, Weapon.all()[2]);
-    //   var player = new Player('李四', 30, 1);
-    //   var bout = new Bout(player, soldier);
-    //
-    //   bout.times = 5;
-    //   var result = bout.boutDizzy();
-    //
-    //   var expectText = '//张三进攻\n//李四进攻';
-    //   expect(result).toBe(expectText);
-    // });
+    it('it should be return correct string when times equal five', function() {
+
+      var soldier = new Soldier('张三', 30, 2, Weapon.all()[2]);
+      var player = new Player('李四', 30, 1);
+      var bout = new Bout(player, soldier);
+
+      bout.times = 5;
+      var result = bout.boutDizzy();
+
+      var expectText = '//张三进攻\n//李四进攻\n';
+      expect(result).toBe(expectText);
+    });
   });
 
 });
