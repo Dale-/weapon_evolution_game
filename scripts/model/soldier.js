@@ -14,30 +14,40 @@ Soldier.prototype.constructor = Soldier;
 
 Soldier.prototype.attack = function(commonPeople) {
 
-  var value = this.attackValue + weapon.attackPoint;
-  commonPeople.hp -= (this.attackPoint + weapon.attackPoint);
+  var info ='';
 
-  if(weapon.skill === '毒性' || weapon.skill === '火焰') {
+  var value = this.attackPoint + this.weapon.attackPoint;
+  commonPeople.hp -= (this.attackPoint + this.weapon.attackPoint);
 
-    info = '战士' + this.name + '用' + weapon.name + '攻击了普通人' +
-    commonPeople.name + '，' + commonPeople.name + '受到了' +
-    value + '点伤害，' + commonPeople.name + weapon.getSkillInfo() +
-    commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
+  //console.log(this.name);
+  if(this.weapon.skill.name === '毒性' || this.weapon.skill.name === '火焰') {
 
-    commonPeople.hp -= weapon.getSkillBlood() ;
+    info += '战士' + this.name + '用' + this.weapon.name +
+            '攻击了普通人' + commonPeople.name + '，' +
+            commonPeople.name + '受到了' + value + '点伤害，' +
+            commonPeople.name + this.weapon.getSkillInfo() +
+            commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
 
-    info += commonPeople.name + '受到' + weapon.getSkillBlood() + '点' +
-    weapon.getSkillName() + '伤害,' + commonPeople.name +
-    '剩余生命：' + commonPeople.hp;
+    commonPeople.hp -= this.weapon.getSkillBlood() ;
 
-  } else if(weapon.skill === '致命一击') {
+    info += commonPeople.name + '受到' +
+            this.weapon.getSkillBlood() + '点' +
+            this.weapon.getSkillName() + '伤害,' +
+            commonPeople.name + '剩余生命：' + commonPeople.hp;
+
+  } else if(this.weapon.skill.name === '致命一击') {
 
   } else {
 
   }
-
   return info;
 };
+
+// Soldier.prototype.getWeaponSkillInfo = function() {
+//   this.weapon.getSkillInfo();
+//   return this.weapon.getSkillInfo();
+// };
+
 
 
 // Soldier.prototype.getHp = function() {

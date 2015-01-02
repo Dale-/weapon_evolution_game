@@ -8,43 +8,22 @@ jest.dontMock('../../model/player.js');
 
 describe('Soldier', function() {
 
-  var Soldier;
+  describe('#attack', function() {
 
-  beforeEach(function() {
-    Soldier = require('../../model/soldier');
-    //CommonPeople = require('../../model/common-people');
-    Weapon = require('../../model/weapon');
-    Skill = require('../../model/skill');
-  });
+    it('it should be return correct string', function() {
 
-  describe('#attackText', function() {
+      var Soldier = require('../../model/soldier');
+      var Weapon = require('../../model/weapon');
+      var Skill = require('../../model/skill');
 
-    it('it should be return correct hp', function() {
+      var skill = new Skill('毒性', 0, 2, '中毒了，', 0.2);
+      var weapon = new Weapon('优质毒剑', 4, skill);
 
-      var skill =  {
-                    name: '毒性',
-                    times: 0,
-                    blood: 2,
-                    info: '中毒了，',
-                    probability: 0.2
-                   };
+      // var getWeaponSkillInfo = jest.genMockFn();
+      // getWeaponSkillInfo.mockReturnValue('中毒了，');
 
-      var soldier = new Soldier(
-                                '张三',
-                                50,
-                                2,
-                                {
-                                  name: '优质毒剑',
-                                  natureValue: 4,
-                                  skill: skill
-                                });
-
-      var result = soldier.attack(
-        {name: '李四', hp: 50, attackValue: 1},
-        {name: '优质毒剑', natureValue: 4, skill: '毒性'},
-        {name: '毒性', times: 0, blood: 2, info: '中毒了，', probability: 0.2 },
-        6
-      );
+      var soldier = new Soldier('张三', 50, 2, weapon);
+      var result = soldier.attack({name: '李四', hp: 50, attackValue: 1});
 
       var expectText = '战士张三用优质毒剑攻击了普通人李四，' +
                        '李四受到了6点伤害，' +

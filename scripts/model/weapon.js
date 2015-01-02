@@ -1,4 +1,4 @@
-function Weapon(name, natureValue, skill) {
+function Weapon(name, attackPoint, skill) {
   this.name = name;
   this.attackPoint = attackPoint;
   this.skill = skill;

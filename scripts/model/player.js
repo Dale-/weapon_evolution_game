@@ -7,11 +7,10 @@ function Player(name, hp, attackPoint) {
   this.attackPoint = attackPoint;
 }
 
-Player.prototype.attack = function(player) {
+Player.prototype.attack = function(soldier) {
 
-  player.hp -= this.attackValue;
-
-  return player.hp;
+  soldier.hp -= this.attackPoint;
+  return '//' + this.name + '进攻';
 };
 
 module.exports = Player;
