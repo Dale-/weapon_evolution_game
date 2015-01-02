@@ -109,7 +109,7 @@ describe('Bout', function() {
 
       var expectText = '战士张三用晕锤攻击了普通人李四，李四受到了6点伤害，' +
                        '李四晕倒了，李四剩余生命：24\n' +
-                       '李四晕倒了，无法攻击, 眩晕还剩：1轮';
+                       '李四晕倒了，无法攻击, 眩晕还剩：1轮\n';
       expect(result).toBe(expectText);
     });
 

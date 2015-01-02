@@ -23,7 +23,7 @@ Bout.prototype.boutBlood = function() {
   }
 
   if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
+    info += '\n' + this.getPlayerName() + '被打死了';
     return info;
   }
 
@@ -35,7 +35,7 @@ Bout.prototype.boutBlood = function() {
           this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
 
   if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
+    info += '\n' + this.getPlayerName() + '被打死了';
     return info;
   }
 
@@ -43,7 +43,7 @@ Bout.prototype.boutBlood = function() {
   info += '//' + this.getPlayerName() + '进攻\n';
 
   if(this.getSoldierHP() <= 0) {
-    info += this.getSoldierName() + '被打死了';
+    info += '\n' + this.getSoldierName() + '被打死了';
     return info;
   }
   this.times ++;
@@ -70,7 +70,7 @@ Bout.prototype.boutCtriticalStrike = function() {
   }
 
   if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
+    info += '\n' + this.getPlayerName() + '被打死了';
     return info;
   }
 
@@ -79,7 +79,7 @@ Bout.prototype.boutCtriticalStrike = function() {
   info += '//' + this.getPlayerName() + '进攻\n';
 
   if(this.getSoldierHP() <= 0) {
-    info += this.getSoldierName() + '被打死了';
+    info += '\n' + this.getSoldierName() + '被打死了';
     return info;
   }
   this.times ++;
@@ -105,7 +105,7 @@ Bout.prototype.boutFrozen = function() {
   }
 
   if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
+    info += '\n' + this.getPlayerName() + '被打死了';
     return info;
   }
 
@@ -123,7 +123,7 @@ Bout.prototype.boutFrozen = function() {
   }
 
   if(this.getSoldierHP() <= 0) {
-    info += this.getSoldierName() + '被打死了';
+    info += '\n' + this.getSoldierName() + '被打死了';
     return info;
   }
   this.times ++;
@@ -153,7 +153,7 @@ Bout.prototype.boutDizzy = function() {
   }
 
   if(this.getPlayerHP() <= 0) {
-    info += this.getPlayerName() + '被打死了';
+    info += '\n' + this.getPlayerName() + '被打死了';
     return info;
   }
 
@@ -168,7 +168,7 @@ Bout.prototype.boutDizzy = function() {
   }
 
   if(this.getSoldierHP() <= 0) {
-    info += this.getSoldierName() + '被打死了';
+    info += '\n' + this.getSoldierName() + '被打死了';
     return info;
   }
   this.times ++;
