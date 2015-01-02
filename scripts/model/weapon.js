@@ -26,6 +26,10 @@ Weapon.prototype.getSkillBlood = function() {
   return this.skill.blood;
 };
 
+Weapon.prototype.getSkillName = function() {
+  return this.skill.name;
+};
+
 // Weapon.prototype.getAttackValue = function() {
 //
 //   switch(this.characters[0]) {

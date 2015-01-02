@@ -7,9 +7,6 @@ var Weapon = require('./weapon.js');
 function Soldier(name, hp, attackPoint, weapon) {
   Player.call(this, name, hp, attackPoint);
   this.weapon = weapon;
-  // this.character = character;
-  // this.defenseTool = defenseTool;
-  // this.defenseValue = 0;
 }
 
 Soldier.prototype = Object.create(Player.prototype);
@@ -17,9 +14,8 @@ Soldier.prototype.constructor = Soldier;
 
 Soldier.prototype.attack = function(commonPeople) {
 
-  var value = this.attackValue + weapon.natureValue;
-
-  commonPeople.hp -= (this.attackPoint + weapon.natureValue);
+  var value = this.attackValue + weapon.attackPoint;
+  commonPeople.hp -= (this.attackPoint + weapon.attackPoint);
 
   if(weapon.skill === '毒性' || weapon.skill === '火焰') {
 
@@ -28,10 +24,10 @@ Soldier.prototype.attack = function(commonPeople) {
     value + '点伤害，' + commonPeople.name + weapon.getSkillInfo() +
     commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
 
-    commonPeople.hp -= skill.blood ;
+    commonPeople.hp -= weapon.getSkillBlood() ;
 
-    info += commonPeople.name + '受到' + skill.blood + '点' +
-    skill.name + '伤害,' + commonPeople.name +
+    info += commonPeople.name + '受到' + weapon.getSkillBlood() + '点' +
+    weapon.getSkillName() + '伤害,' + commonPeople.name +
     '剩余生命：' + commonPeople.hp;
 
   } else if(weapon.skill === '致命一击') {
