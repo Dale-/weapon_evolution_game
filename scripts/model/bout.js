@@ -149,7 +149,7 @@ Bout.prototype.boutDizzy = function() {
   } else {
 
     info += '//' + this.getSoldierName() + '进攻\n';
-    this.dizzyTimes = this.dizzyTimes > 0 ? this.dizzyTimes-- : this.dizzyTimes;
+    this.dizzyTimes = this.dizzyTimes > 0 ? this.dizzyTimes-1 : this.dizzyTimes;
   }
 
   if(this.getPlayerHP() <= 0) {
@@ -160,7 +160,7 @@ Bout.prototype.boutDizzy = function() {
   if(this.dizzyTimes > 0) {
 
     info += this.getPlayerName() +'晕倒了，无法攻击, 眩晕还剩：' +
-    this.dizzyTimes + '轮';
+            this.dizzyTimes + '轮\n';
   } else {
 
     this.soldier.hp -= this.getPlayerAP();

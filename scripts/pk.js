@@ -5,7 +5,7 @@ var Weapon = require('./model/weapon');
 var Skill = require('./model/skill');
 
 (function PK() {
-  var weapon = Weapon.all()[3];
+  var weapon = Weapon.all()[2];
   var soldier = new Soldier('张三', 50, 2, weapon);
   var player = new Player('李四', 50, 1);
   var bout = new Bout(player, soldier);
@@ -22,8 +22,14 @@ var Skill = require('./model/skill');
     } else if(bout.getSoldierWeaponName() === '利剑') {
 
       info = bout.boutCtriticalStrike();
+
     } else if(bout.getSoldierWeaponName() === '寒冰剑') {
+
       info = bout.boutFrozen();
+
+    } else {
+
+      info = bout.boutDizzy();
     }
     console.log(info);
 
