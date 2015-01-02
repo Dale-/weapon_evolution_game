@@ -25,9 +25,7 @@ describe('Bout', function() {
 
     it('it should be return correct string', function() {
 
-      var skill = new Skill('毒性', 0, 2, '中毒了，', 0.2);
-      var weapon = new Weapon('优质毒剑', 4, skill);
-      var soldier = new Soldier('张三', 50, 2, weapon);
+      var soldier = new Soldier('张三', 50, 2, Weapon.all()[4]);
       var player = new Player('李四', 50, 1);
       var bout = new Bout(player, soldier);
       var result = bout.boutBlood();
@@ -46,9 +44,7 @@ describe('Bout', function() {
 
     it('it should be return correct string', function() {
 
-      var skill = new Skill('致命一击', 0, 0, '发动了致命一击，', 0.9);
-      var weapon = new Weapon('利剑', 3, skill);
-      var soldier = new Soldier('张三', 20, 2, weapon);
+      var soldier = new Soldier('张三', 20, 2, Weapon.all()[0]);
       var player = new Player('李四', 20, 1);
       var bout = new Bout(player, soldier);
       var result = bout.boutCtriticalStrike();
@@ -56,6 +52,24 @@ describe('Bout', function() {
       var expectText = '战士张三用利剑攻击了普通人李四，' +
                        '张三发动了致命一击，李四受到了15点伤害，' +
                        '李四剩余生命：5\n//李四进攻\n';
+
+      expect(result).toBe(expectText);
+    });
+  });
+
+  describe('.boutFrozen', function() {
+
+    it('it should be return correct string', function() {
+
+      var soldier = new Soldier('张三', 30, 2, Weapon.all()[3]);
+      var player = new Player('李四', 30, 1);
+      var bout = new Bout(player, soldier);
+      var result = bout.boutCtriticalStrike();
+
+      var expectText = '战士张三用寒冰剑攻击了普通人李四,李四受到了6点伤害,' +
+                       '李四冻僵了,李四剩余生命：24\n//李四进攻\n\n' +
+                       '//张三进攻\n//李四进攻\n\n//张三进攻' +
+                       '李四冻得直哆嗦，没有击中张三\n//张三进攻';
 
       expect(result).toBe(expectText);
     });
