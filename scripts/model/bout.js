@@ -87,18 +87,15 @@ Bout.prototype.boutCtriticalStrike = function() {
 Bout.prototype.boutFrozen = function() {
   var info = '';
 
-  var value = (this.getSoldierAP() + this.getSoldierWeaponAp()) * 3;
+  var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
   this.player.hp -= value;
 
   if(this.times === 1) {
 
     info += '战士' + this.getSoldierName() + '用' +
             this.getSoldierWeaponName() + '攻击了普通人' +
-            this.getPlayerName() + '，' +this.getSoldierName() +
-            this.getSoldierWeaponSkillInfo() + this.getPlayerName() +
-            '受到了' + value + '点伤害，' + this.getPlayerName() +
-            this.getSoldierWeaponSkillInfo() + this.getPlayerName() +
-            '剩余生命：' + this.getPlayerHP() + '\n';
+            this.getPlayerName() + '，' + this.getPlayerName() +
+            '受到了' + value + '点伤害，';
 
   } else {
     info += '//' + this.getSoldierName() + '进攻\t' +
@@ -112,9 +109,10 @@ Bout.prototype.boutFrozen = function() {
 
   if(this.times === 1) {
     info += this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
-            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n' +
+            '//' + this.getPlayerName() +'进攻\n';
 
-  }else if(this.times === 2) {
+  }else if(this.times === 3) {
     info += this.getPlayerName() + '冻得直哆嗦，没有击中' +
             this.getSoldierName() + '\n';
   } else {
