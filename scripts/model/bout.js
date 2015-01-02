@@ -20,8 +20,20 @@ Bout.prototype.getPlayerName = function() {
   return this.player.name;
 };
 
-Bout.prototype.getWeaponName = function() {
+Bout.prototype.getSoldierWeaponName = function() {
   return this.soldier.getWeaponName();
+};
+
+Bout.prototype.getSoldierWeaponSkillInfo = function() {
+  return this.soldier.getWeaponSkillInfo();
+};
+
+Bout.prototype.getSoldierWeaponSkillName = function() {
+  return this.soldier.getWeaponSkillName();
+};
+
+Bout.prototype.getSoldierWeaponSkillBlood = function() {
+  return this.soldier.getWeaponSkillBlood();
 };
 
 Bout.prototype.boutBlood = function() {
@@ -32,18 +44,18 @@ Bout.prototype.boutBlood = function() {
     var value = this.getSoldierAP() + this.soldier.getWeaponAP();
     this.player.hp -= (this.getSoldierAP() + this.soldier.getWeaponAP());
 
-    info += '战士' + this.getSoldierName() + '用' + this.getWeaponName() +
+    info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
             '攻击了普通人' + this.getPlayerName() + '，' +
             this.getPlayerName() + '受到了' + value + '点伤害，' +
-            this.getPlayerName() + this.soldier.weapon.getSkillInfo() +
+            this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
             this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
 
-    this.player.hp -= this.soldier.weapon.getSkillBlood() ;
+    this.player.hp -= this.getSoldierWeaponSkillBlood() ;
 
-    info += this.player.name + '受到' +
-            this.soldier.weapon.getSkillBlood() + '点' +
-            this.soldier.weapon.getSkillName() + '伤害,' +
-            this.player.name + '剩余生命：' + this.player.hp;
+    info += this.getPlayerName() + '受到' +
+            this.getSoldierWeaponSkillBlood() + '点' +
+            this.getSoldierWeaponSkillName() + '伤害,' +
+            this.getPlayerName() + '剩余生命：' + this.getPlayerHP();
   } else {
 
   }

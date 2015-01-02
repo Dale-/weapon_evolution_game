@@ -24,6 +24,18 @@ Soldier.prototype.getWeaponSkill = function() {
   return this.weapon.skill;
 };
 
+Soldier.prototype.getWeaponSkillInfo = function() {
+  return this.weapon.getSkillInfo();
+};
+
+Soldier.prototype.getWeaponSkillName = function() {
+  return this.weapon.getSkillName();
+};
+
+Soldier.prototype.getWeaponSkillBlood = function() {
+  return this.weapon.getSkillBlood();
+};
+
 Soldier.prototype.attack = function(commonPeople) {
 
   var info ='';
