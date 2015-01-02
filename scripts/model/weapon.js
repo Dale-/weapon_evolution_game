@@ -14,8 +14,16 @@ Weapon.all = function() {
          ];
 };
 
-Weapon.prototype.getSkill = function() {
-  return this.skill;
+Weapon.prototype.getSkillInfo = function() {
+  return this.skill.info;
+};
+
+Weapon.prototype.getSkillTimes = function() {
+  return this.skill.times;
+};
+
+Weapon.prototype.getSkillBlood = function() {
+  return this.skill.blood;
 };
 
 // Weapon.prototype.getAttackValue = function() {
