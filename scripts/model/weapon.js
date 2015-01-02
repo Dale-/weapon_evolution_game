@@ -14,6 +14,10 @@ Weapon.all = function() {
          ];
 };
 
+Weapon.prototype.getSkill = function() {
+  return this.skill;
+};
+
 // Weapon.prototype.getAttackValue = function() {
 //
 //   switch(this.characters[0]) {

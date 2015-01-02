@@ -4,9 +4,9 @@ var Player = require('./player.js');
 var Weapon = require('./weapon.js');
 
 
-function Soldier(name, hp, attackValue, weaponName) {
+function Soldier(name, hp, attackValue, weapon) {
   Player.call(this, name, hp, attackValue);
-  this.weaponName = weaponName;
+  this.weapon = weapon;
   // this.character = character;
   // this.defenseTool = defenseTool;
   // this.defenseValue = 0;
@@ -17,24 +17,26 @@ Soldier.prototype.constructor = Soldier;
 
 Soldier.prototype.attack = function(commonPeople) {
 
-  var weapons = Weapon.all();
-  var weapon;
-  for(var i = 0; i < weapons.length; i++) {
-    if(weapons[i].name === this.weaponName) {
-      weapon = weapons[i];
-    }
-  }
-
-  var skills = Skill.all();
-  var skill;
-  for(var x = 0; x < skills.length; x++) {
-    if(skills[x].name === weapon.skill ) {
-      skill = skills[x];
-    }
-  }
-
   var value = this.attackValue + weapon.natureValue;
-  info = this.attackText(commonPeople, weapon, skill, value);
+
+  if(weapon.skill === '毒性' || weapon.skill === '火焰') {
+
+    info = '战士' + this.name + '用' + weapon.name + '攻击了普通人' +
+    commonPeople.name + '，' + commonPeople.name + '受到了' +
+    value + '点伤害，' + commonPeople.name + weapon.skill.info +
+    commonPeople.name + '剩余生命：' + commonPeople.hp + '\n';
+
+    commonPeople.hp -= skill.blood ;
+
+    info += commonPeople.name + '受到' + skill.blood + '点' +
+    skill.name + '伤害,' + commonPeople.name +
+    '剩余生命：' + commonPeople.hp;
+
+  } else if(weapon.skill === '致命一击') {
+
+  } else {
+
+  }
 
   return info;
 };

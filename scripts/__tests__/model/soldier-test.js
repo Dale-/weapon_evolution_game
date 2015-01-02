@@ -41,7 +41,23 @@ describe('Soldier', function() {
 
     it('it should be return correct hp', function() {
 
-      var soldier = new Soldier('张三', 50, 2, '优质毒剑');
+      var skill =  {
+                    name: '毒性',
+                    times: 0,
+                    blood: 2,
+                    info: '中毒了，',
+                    probability: 0.2
+                   };
+
+      var soldier = new Soldier(
+                                '张三',
+                                50,
+                                2,
+                                {
+                                  name: '优质毒剑',
+                                  natureValue: 4,
+                                  skill: skill
+                                });
 
       var result = soldier.attackText(
         {name: '李四', hp: 50, attackValue: 1},
