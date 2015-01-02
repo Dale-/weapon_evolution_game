@@ -67,18 +67,5 @@ Soldier.prototype.attack = function(commonPeople) {
   return info;
 };
 
-// Soldier.prototype.getWeaponSkillInfo = function() {
-//   this.weapon.getSkillInfo();
-//   return this.weapon.getSkillInfo();
-// };
-
-
-
-// Soldier.prototype.getHp = function() {
-//   console.log(this.defenseTool);
-//   var myDefenseTool = _.find(DefenseTool.all(),{ 'name': this.defenseTool});
-//   this.hp += myDefenseTool.attackValue;
-//   this.defenseValue = myDefenseTool.attackValue;
-// };
 
 module.exports = Soldier;
