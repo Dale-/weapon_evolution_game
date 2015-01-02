@@ -16,6 +16,10 @@ Soldier.prototype.getWeaponAP = function() {
   return this.weapon.attackPoint;
 };
 
+Soldier.prototype.getWeaponName = function() {
+  return this.weapon.name;
+};
+
 Soldier.prototype.getWeaponSkill = function() {
   return this.weapon.skill;
 };
