@@ -7,8 +7,8 @@ function Bout(player, soldier) {
 Bout.prototype.boutBlood = function() {
   var info = '';
 
-  var value = this.getSoldierAP() + this.soldier.getWeaponAP();
-  this.player.hp -= (this.getSoldierAP() + this.soldier.getWeaponAP());
+  var value = this.getSoldierAP() + this.getSoldierWeaponAp();
+  this.player.hp -= value;
 
   if(this.times === 1){
 
@@ -50,6 +50,22 @@ Bout.prototype.boutBlood = function() {
 };
 
 Bout.prototype.boutCtriticalStrike = function() {
+  var info = '';
+
+  var value = (this.getSoldierAP() + this.getSoldierWeaponAp()) * 3;
+  this.player.hp -= value;
+
+  info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
+          '攻击了普通人' + this.getPlayerName() + '，' +this.getSoldierName() +
+          this.getSoldierWeaponSkillInfo() + this.getPlayerName() + '受到了' +
+          value + '点伤害' + '，' + this.getPlayerName() + '剩余生命：' +
+          this.getPlayerHP() + '\n';
+
+  this.soldier.hp -= this.getPlayerAP();
+
+  info += '//' + this.getPlayerName() + '进攻\n';
+
+  return info;
 };
 
 Bout.prototype.getSoldierAP = function() {
@@ -78,6 +94,10 @@ Bout.prototype.getPlayerName = function() {
 
 Bout.prototype.getSoldierWeaponName = function() {
   return this.soldier.getWeaponName();
+};
+
+Bout.prototype.getSoldierWeaponAp = function() {
+  return this.soldier.getWeaponAP();
 };
 
 Bout.prototype.getSoldierWeaponSkillInfo = function() {

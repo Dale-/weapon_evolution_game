@@ -47,11 +47,11 @@ describe('Bout', function() {
     it('it should be return correct string', function() {
 
       var skill = new Skill('致命一击', 0, 0, '发动了致命一击，', 0.9);
-      var weapon = new Weapon('利剑', 3, '致命一击');
+      var weapon = new Weapon('利剑', 3, skill);
       var soldier = new Soldier('张三', 20, 2, weapon);
       var player = new Player('李四', 20, 1);
       var bout = new Bout(player, soldier);
-      var result = bout.boutBlood();
+      var result = bout.boutCtriticalStrike();
 
       var expectText = '战士张三用利剑攻击了普通人李四，' +
                        '张三发动了致命一击，李四受到了15点伤害，' +
