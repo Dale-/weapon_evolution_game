@@ -12,6 +12,14 @@ function Soldier(name, hp, attackPoint, weapon) {
 Soldier.prototype = Object.create(Player.prototype);
 Soldier.prototype.constructor = Soldier;
 
+Soldier.prototype.getWeaponAP = function() {
+  return this.weapon.attackPoint;
+};
+
+Soldier.prototype.getWeaponSkill = function() {
+  return this.weapon.skill;
+};
+
 Soldier.prototype.attack = function(commonPeople) {
 
   var info ='';

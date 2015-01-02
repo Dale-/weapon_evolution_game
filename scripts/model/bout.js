@@ -11,7 +11,7 @@ Bout.prototype.boutBlood = function() {
 
     var value = this.soldier.attackPoint + this.soldier.weapon.attackPoint;
     this.player.hp -=
-         (this.soldier.attackPoint + this.soldier.weapon.attackPoint);
+         (this.soldier.attackPoint + this.soldier.getWeaponAP());
 
     info += '战士' + this.soldier.name + '用' + this.soldier.weapon.name +
             '攻击了普通人' + this.player.name + '，' +
