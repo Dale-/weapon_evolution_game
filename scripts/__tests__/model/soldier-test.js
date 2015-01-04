@@ -28,4 +28,20 @@ describe('Soldier', function() {
     });
   });
 
+  describe('#isDiedText', function() {
+
+    it('it should be return correct string', function() {
+
+      var Soldier = require('../../model/soldier');
+
+
+      var soldier = new Soldier('张三', 0, 2);
+      var result = soldier.isDiedText();
+
+      var expectText = '\n张三被打死了';
+
+      expect(result).toBe(expectText);
+    });
+  });
+
 });

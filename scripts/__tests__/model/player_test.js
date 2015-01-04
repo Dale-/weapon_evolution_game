@@ -14,4 +14,19 @@ describe('Player', function() {
       expect(result).toBe('//Damon进攻');
     });
   });
+
+  describe('#isDiedText', function() {
+
+    it('it should be return correct string', function() {
+
+      var Player = require('../../model/player.js');
+      var player = new Player('Damon', 0, 1);
+      var result = player.isDiedText();
+
+      var expectText = '\nDamon被打死了';
+
+      expect(result).toBe(expectText);
+    });
+  });
+
 });
