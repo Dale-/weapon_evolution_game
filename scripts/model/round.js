@@ -17,7 +17,7 @@ Round.prototype.round = function(skillName) {
   if(this.frozenTimes !== null) {
     this.frozenTimes = _.map(this.frozenTimes,
       function(num) { return num + 1; });
-    }
+  }
 
   var value = this.getSoldierAP() + this.getSoldierWeaponAp();
   this.player.hp -= value;
@@ -35,7 +35,6 @@ Round.prototype.round = function(skillName) {
                          this.poisonTimes - 1 : this.poisonTimes;
     }
 
-
    if(skillName === '火焰') {
       this.fireTimes += 2;
       this.poisonTimes = 0;
@@ -46,7 +45,6 @@ Round.prototype.round = function(skillName) {
       this.fireTimes = this.fireTimes > 0 ?
                        this.fireTimes-1 : this.fireTimes;
     }
-
 
     if(skillName === '冰冻') {
       this.frozenTimes.unshift(1);
@@ -124,8 +122,7 @@ Round.prototype.round = function(skillName) {
       this.dizzyTimes + '轮\n';
 
     } else {
-      this.soldier.hp -= this.getPlayerAP();
-      info += '//' + this.getPlayerName() + '进攻\n';
+      info += this.player.attack(this.soldier);
     }
 
     if(this.soldier.isDiedText() !== ''){

@@ -3,7 +3,7 @@ jest.dontMock('../../model/player.js');
 
 describe('Player', function() {
 
-  describe('#attackPoint', function() {
+  describe('#attack', function() {
 
     it('it should be return correct hp', function() {
 
@@ -11,7 +11,7 @@ describe('Player', function() {
       var player = new Player('Damon', 5, 1);
       var result = player.attack({name: 'Stefan', hp: 3, attackValue:1});
 
-      expect(result).toBe('//Damon进攻');
+      expect(result).toBe('\n//Damon进攻');
     });
   });
 
@@ -23,9 +23,7 @@ describe('Player', function() {
       var player = new Player('Damon', 0, 1);
       var result = player.isDiedText();
 
-      var expectText = '\nDamon被打死了';
-
-      expect(result).toBe(expectText);
+      expect(result).toBe('\nDamon被打死了');
     });
   });
 
