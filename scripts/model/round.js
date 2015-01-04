@@ -30,8 +30,7 @@ Round.prototype.round = function(skillName) {
       this.fireTimes = 0;
 
     } else {
-      this.poisonTimes = this.poisonTimes > 0 ?
-                         this.poisonTimes - 1 : this.poisonTimes;
+      this.reducePoisonTimes();
     }
 
    if(skillName === '火焰') {
@@ -73,9 +72,7 @@ Round.prototype.round = function(skillName) {
   } else {
     info += '//' + this.getSoldierName() + '进攻\n';
 
-    this.poisonTimes = this.poisonTimes > 0 ?
-                       this.poisonTimes - 1 : this.poisonTimes;
-
+    this.reducePoisonTimes();
     this.reduceFireTimes();
 
     if(this.dizzyTimes > -1) { this.dizzyTimes --; }
@@ -143,6 +140,10 @@ Round.prototype.round = function(skillName) {
   return info;
 };
 
+Round.prototype.reducePoisonTimes = function() {
+  this.poisonTimes = this.poisonTimes > 0 ?
+                     this.poisonTimes - 1: this.poisonTimes;
+};
 
 Round.prototype.reduceFireTimes = function() {
   this.fireTimes = this.fireTimes > 0 ?
