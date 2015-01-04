@@ -23,8 +23,7 @@ Round.prototype.round = function(skillName) {
   if(skillName !== '') {
 
     if(skillName === '毒性') {
-      this.poisonTimes = this.poisonTimes >= 1 ?
-                         this.poisonTimes + 1: this.poisonTimes + 2;
+      this.addPoisonTimes();
       this.dizzyTimes = -1;
       this.frozenTimes = [];
       this.fireTimes = 0;
@@ -33,9 +32,8 @@ Round.prototype.round = function(skillName) {
       this.reducePoisonTimes();
     }
 
-   if(skillName === '火焰') {
-     this.fireTimes = this.fireTimes >= 1 ?
-                      this.fireTimes + 1: this.fireTimes + 2;
+    if(skillName === '火焰') {
+      this.addFireTimes();
       this.poisonTimes = 0;
       this.dizzyTimes = -1;
       this.frozenTimes = [];
@@ -117,7 +115,7 @@ Round.prototype.round = function(skillName) {
   }
 
   if(this.frozenTimes !== null &&
-    this.frozenTimes[this.frozenTimes.length - 1] === 3) {
+     this.frozenTimes[this.frozenTimes.length - 1] === 3) {
 
       info += this.getPlayerName() + '冻得直哆嗦，没有击中' +
       this.getSoldierName() + '\n';
@@ -140,9 +138,19 @@ Round.prototype.round = function(skillName) {
   return info;
 };
 
+Round.prototype.addPoisonTimes = function() {
+  this.poisonTimes = this.poisonTimes >= 1 ?
+                     this.poisonTimes + 1: this.poisonTimes + 2;
+};
+
 Round.prototype.reducePoisonTimes = function() {
   this.poisonTimes = this.poisonTimes > 0 ?
                      this.poisonTimes - 1: this.poisonTimes;
+};
+
+Round.prototype.addFireTimes = function() {
+  this.fireTimes = this.fireTimes >= 1 ?
+                   this.fireTimes + 1: this.fireTimes + 2;
 };
 
 Round.prototype.reduceFireTimes = function() {
