@@ -8,7 +8,7 @@ var Soldier = require('./model/soldier');
 (function PK() {
 
   var info = '';
-  var weapon = Weapon.all()[2];
+  var weapon = Weapon.all()[randomNumber()];
   var player = new Player('李四', 100, 1);
   var soldier = new Soldier('张三', 100, 2, weapon);
   var round = new Round(player, soldier);
@@ -30,7 +30,7 @@ var Soldier = require('./model/soldier');
     }
     console.log(info);
 
-    if(info.search('被打死了') != -1) {
+    if(player.hp <= 0 || soldier.hp <= 0) {
       break;
     }
   }
