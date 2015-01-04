@@ -12,8 +12,8 @@ describe('Weapon', function() {
       var Skill = require('../../model/skill');
       var result = Weapon.all();
 
-      expect(result[0].name).toBe('利剑');
-      expect(result[0].skill.name).toBe('致命一击');
+      expect(result[0].name).toBe('晕锤');
+      expect(result[0].skills[0].name).toBe('击晕');
     });
   });
 
