@@ -6,6 +6,7 @@ function Round(player, soldier) {
   this.times = 1;
   this.dizzyTimes = 0;
   this.frozenTimes = [];
+  this.bloodTimes = 0;
 }
 
 Round.prototype.roundBlood = function() {
@@ -23,8 +24,10 @@ Round.prototype.roundBlood = function() {
             this.getPlayerName() + '受到了' + value + '点伤害，' +
             this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
             this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+    this.bloodTimes += 2;
   } else {
     info += '//' + this.getSoldierName() + '进攻\n';
+    this.bloodTimes = this.bloodTimes > 0 ? this.bloodTimes-1 : this.bloodTimes;
   }
 
   if(this.getPlayerHP() <= 0) {
@@ -34,10 +37,13 @@ Round.prototype.roundBlood = function() {
 
   this.player.hp -= this.getSoldierWeaponSkillBlood() ;
 
-  info += this.getPlayerName() + '受到' +
-          this.getSoldierWeaponSkillBlood() + '点' +
-          this.getSoldierWeaponSkillName() + '伤害,' +
-          this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+  if(this.bloodTimes > 0) {
+    info += this.getPlayerName() + '受到' +
+            this.getSoldierWeaponSkillBlood() + '点' +
+            this.getSoldierWeaponSkillName() + '伤害,' +
+            this.getPlayerName() + '剩余生命：' +
+            this.getPlayerHP() + '\n';
+        }
 
   if(this.getPlayerHP() <= 0) {
     info += '\n' + this.getPlayerName() + '被打死了';
@@ -96,7 +102,7 @@ Round.prototype.roundCtriticalStrike = function() {
 Round.prototype.roundFrozen = function() {
   var info = '';
   if(this.frozenTimes !== null) {
-    this.frozenTimes = _.map(this.frozenTimes,
+     this.frozenTimes = _.map(this.frozenTimes,
          function(num) { return num + 1; });
   }
 
@@ -124,12 +130,6 @@ Round.prototype.roundFrozen = function() {
     return info;
   }
 
-  // if(frozenTimes % 3 === 1) {
-  //   info += this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
-  //           this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n' +
-  //           '//' + this.getPlayerName() +'进攻\n';
-  //
-  // }
   if(this.frozenTimes !== null &&
      this.frozenTimes[this.frozenTimes.length - 1] === 3) {
 
