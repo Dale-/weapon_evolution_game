@@ -23,7 +23,7 @@ describe('Player', function() {
       var player = new Player('Damon', 0, 1);
       var result = player.isDiedText();
 
-      expect(result).toBe('\nDamon被打死了');
+      expect(result).toBe('Damon被打死了\n');
     });
   });
 
