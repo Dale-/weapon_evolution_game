@@ -1,11 +1,11 @@
-function Bout(player, soldier) {
+function Round(player, soldier) {
   this.player = player;
   this.soldier = soldier;
   this.times = 1;
   this.dizzyTimes = 0;
 }
 
-Bout.prototype.boutBlood = function() {
+Round.prototype.roundBlood = function() {
   var info = '';
 
   var value = this.getSoldierAP() + this.getSoldierWeaponAp();
@@ -50,7 +50,7 @@ Bout.prototype.boutBlood = function() {
   return info;
 };
 
-Bout.prototype.boutCtriticalStrike = function() {
+Round.prototype.roundCtriticalStrike = function() {
   var info = '';
 
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp()) * 3;
@@ -86,7 +86,7 @@ Bout.prototype.boutCtriticalStrike = function() {
   return info;
 };
 
-Bout.prototype.boutFrozen = function() {
+Round.prototype.roundFrozen = function() {
   var info = '';
 
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
@@ -130,7 +130,7 @@ Bout.prototype.boutFrozen = function() {
   return info;
 };
 
-Bout.prototype.boutDizzy = function() {
+Round.prototype.roundDizzy = function() {
   var info = '';
 
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
@@ -175,48 +175,48 @@ Bout.prototype.boutDizzy = function() {
   return info;
 };
 
-Bout.prototype.getSoldierAP = function() {
+Round.prototype.getSoldierAP = function() {
   return this.soldier.attackPoint;
 };
 
-Bout.prototype.getPlayerAP = function() {
+Round.prototype.getPlayerAP = function() {
   return this.player.attackPoint;
 };
 
-Bout.prototype.getPlayerHP = function() {
+Round.prototype.getPlayerHP = function() {
   return this.player.hp;
 };
 
-Bout.prototype.getSoldierHP = function() {
+Round.prototype.getSoldierHP = function() {
   return this.soldier.hp;
 };
 
-Bout.prototype.getSoldierName = function() {
+Round.prototype.getSoldierName = function() {
   return this.soldier.name;
 };
 
-Bout.prototype.getPlayerName = function() {
+Round.prototype.getPlayerName = function() {
   return this.player.name;
 };
 
-Bout.prototype.getSoldierWeaponName = function() {
+Round.prototype.getSoldierWeaponName = function() {
   return this.soldier.getWeaponName();
 };
 
-Bout.prototype.getSoldierWeaponAp = function() {
+Round.prototype.getSoldierWeaponAp = function() {
   return this.soldier.getWeaponAP();
 };
 
-Bout.prototype.getSoldierWeaponSkillInfo = function() {
+Round.prototype.getSoldierWeaponSkillInfo = function() {
   return this.soldier.getWeaponSkillInfo();
 };
 
-Bout.prototype.getSoldierWeaponSkillName = function() {
+Round.prototype.getSoldierWeaponSkillName = function() {
   return this.soldier.getWeaponSkillName();
 };
 
-Bout.prototype.getSoldierWeaponSkillBlood = function() {
+Round.prototype.getSoldierWeaponSkillBlood = function() {
   return this.soldier.getWeaponSkillBlood();
 };
 
-module.exports = Bout;
+module.exports = Round;

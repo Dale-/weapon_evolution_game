@@ -1,4 +1,4 @@
-var Bout = require('./model/bout');
+var Round = require('./model/round');
 var Skill = require('./model/skill');
 var Weapon = require('./model/weapon');
 var Player = require('./model/player');
@@ -11,22 +11,22 @@ var Soldier = require('./model/soldier');
   var weapon = Weapon.all()[randomNumber()];
   var player = new Player('李四', 30, 1);
   var soldier = new Soldier('张三', 30, 2, weapon);
-  var bout = new Bout(player, soldier);
+  var round = new Round(player, soldier);
 
   while(true) {
 
-    if(bout.getSoldierWeaponName() === '优质毒剑' ||
-       bout.getSoldierWeaponName() === '火焰剑') {
-         info = bout.boutBlood();
+    if(round.getSoldierWeaponName() === '优质毒剑' ||
+       round.getSoldierWeaponName() === '火焰剑') {
+         info = round.roundBlood();
 
-    } else if(bout.getSoldierWeaponName() === '利剑') {
-      info = bout.boutCtriticalStrike();
+    } else if(round.getSoldierWeaponName() === '利剑') {
+      info = round.roundCtriticalStrike();
 
-    } else if(bout.getSoldierWeaponName() === '寒冰剑') {
-      info = bout.boutFrozen();
+    } else if(round.getSoldierWeaponName() === '寒冰剑') {
+      info = round.roundFrozen();
 
     } else {
-      info = bout.boutDizzy();
+      info = round.roundDizzy();
     }
     console.log(info);
 
