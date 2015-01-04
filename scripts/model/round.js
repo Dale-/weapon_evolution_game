@@ -1,8 +1,11 @@
+var _ = require('lodash');
+
 function Round(player, soldier) {
   this.player = player;
   this.soldier = soldier;
   this.times = 1;
   this.dizzyTimes = 0;
+  this.frozenTimes = [];
 }
 
 Round.prototype.roundBlood = function() {
@@ -12,7 +15,6 @@ Round.prototype.roundBlood = function() {
   this.player.hp -= value;
 
   var blood = Math.random() < 0.4 ? true : false;
-
 
   if(blood){
 
@@ -59,7 +61,9 @@ Round.prototype.roundCtriticalStrike = function() {
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp()) * 3;
   this.player.hp -= value;
 
-  if(this.times === 1){
+  var ctriticalStrike = Math.random() < 0.4 ? true : false;
+
+  if(ctriticalStrike){
 
     info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
             '攻击了普通人' + this.getPlayerName() + '，' +this.getSoldierName() +
@@ -91,20 +95,28 @@ Round.prototype.roundCtriticalStrike = function() {
 
 Round.prototype.roundFrozen = function() {
   var info = '';
+  if(this.frozenTimes !== null) {
+    this.frozenTimes = _.map(this.frozenTimes,
+         function(num) { return num + 1; });
+  }
 
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
   this.player.hp -= value;
 
-  if(this.times % 3 === 1) {
+  var frozen = Math.random() < 0.4 ? true : false;
+
+  if(frozen) {
 
     info += '战士' + this.getSoldierName() + '用' +
             this.getSoldierWeaponName() + '攻击了普通人' +
             this.getPlayerName() + '，' + this.getPlayerName() +
-            '受到了' + value + '点伤害，';
+            '受到了' + value + '点伤害，' + this.getPlayerName() +
+            this.getSoldierWeaponSkillInfo() + this.getPlayerName() +
+            '剩余生命：' + this.getPlayerHP() + '\n';
 
+    this.frozenTimes.unshift(1);
   } else {
-    info += '//' + this.getSoldierName() + '进攻\t' +
-    this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+    info += '//' + this.getSoldierName() + '进攻\n';
   }
 
   if(this.getPlayerHP() <= 0) {
@@ -112,14 +124,18 @@ Round.prototype.roundFrozen = function() {
     return info;
   }
 
-  if(this.times % 3 === 1) {
-    info += this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
-            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n' +
-            '//' + this.getPlayerName() +'进攻\n';
+  // if(frozenTimes % 3 === 1) {
+  //   info += this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
+  //           this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n' +
+  //           '//' + this.getPlayerName() +'进攻\n';
+  //
+  // }
+  if(this.frozenTimes !== null &&
+     this.frozenTimes[this.frozenTimes.length - 1] === 3) {
 
-  }else if(this.times % 3 === 0) {
     info += this.getPlayerName() + '冻得直哆嗦，没有击中' +
             this.getSoldierName() + '\n';
+    this.frozenTimes.pop();
   } else {
     this.soldier.hp -= this.getPlayerAP();
     info += '//' + this.getPlayerName() + '进攻\n';
