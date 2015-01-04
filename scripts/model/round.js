@@ -11,7 +11,10 @@ Round.prototype.roundBlood = function() {
   var value = this.getSoldierAP() + this.getSoldierWeaponAp();
   this.player.hp -= value;
 
-  if(this.times === 1){
+  var blood = Math.random() < 0.4 ? true : false;
+
+
+  if(blood){
 
     info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
             '攻击了普通人' + this.getPlayerName() + '，' +
