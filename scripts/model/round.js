@@ -15,7 +15,7 @@ Round.prototype.round = function() {
   var info = '';
 
   var is = Math.random() < 0.4 ? true : false;
-  var skillName = is ? '致命一击' : '';
+  var skillName = is ? '击晕' : '';
 
   if(this.frozenTimes !== null) {
     this.frozenTimes = _.map(this.frozenTimes,
