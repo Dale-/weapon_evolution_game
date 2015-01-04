@@ -8,7 +8,8 @@ var Soldier = require('./model/soldier');
 (function PK() {
 
   var info = '';
-  var weapon = Weapon.all()[2];
+  var weapon = Weapon.all()[Random.weapon()];
+  var skill = Random.skill(weapon);
   var player = new Player('李四', 80, 1);
   var soldier = new Soldier('张三', 80, 2, weapon);
   var round = new Round(player, soldier);
@@ -36,23 +37,3 @@ var Soldier = require('./model/soldier');
  }
 
 })();
-
-function randomNumber() {
-  var number = Math.random();
-
-  if(number <= 0.2) {
-    return 0;
-
-  } else if (number <= 0.4) {
-    return 1;
-
-  } else if (number <= 0.6) {
-    return 2;
-
-  } else if (number <= 0.8) {
-    return 3;
-
-  } else {
-    return 4;
-  }
-}
