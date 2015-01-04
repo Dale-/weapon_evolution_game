@@ -19,8 +19,7 @@ Round.prototype.round = function(skillName) {
       function(num) { return num + 1; });
   }
 
-  var value = this.getSoldierAP() + this.getSoldierWeaponAp();
-  this.player.hp -= value;
+  var playerJumpBlood = this.soldier.attack(this.player);
 
   if(skillName !== '') {
 
@@ -65,11 +64,11 @@ Round.prototype.round = function(skillName) {
     }
 
     if(skillName === '致命一击') {
-      this.player.hp -= 2*value;
-      value *= 3;
+      this.player.hp -= 2*playerJumpBlood;
+      playerJumpBlood *= 3;
     }
 
-    info += this.soldier.attackText(this.player, skillName, value);
+    info += this.soldier.attackText(this.player, skillName, playerJumpBlood);
 
   } else {
     info += '//' + this.getSoldierName() + '进攻\n';

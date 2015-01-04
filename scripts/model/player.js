@@ -10,13 +10,13 @@ function Player(name, hp, attackPoint) {
 Player.prototype.attack = function(soldier) {
 
   soldier.hp -= this.attackPoint;
-  return '\n//' + this.name + '进攻';
+  return '//' + this.name + '进攻\n';
 };
 
 Player.prototype.isDiedText = function() {
 
   if(this.hp <= 0) {
-    return '\n' + this.name + '被打死了';
+    return  this.name + '被打死了' + '\n';
   } else {
     return '';
   }
