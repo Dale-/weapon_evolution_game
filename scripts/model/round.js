@@ -136,7 +136,9 @@ Round.prototype.roundDizzy = function() {
   var value = (this.getSoldierAP() + this.getSoldierWeaponAp());
   this.player.hp -= value;
 
-  if(this.times === 1 || this.times === 2){
+  var dizzy = Math.random() < 0.4 ? true : false;
+
+  if(dizzy) {
 
     info += '战士' + this.getSoldierName() + '用' + this.getSoldierWeaponName() +
             '攻击了普通人' + this.getPlayerName() + '，' +this.getPlayerName() +
