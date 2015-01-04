@@ -26,17 +26,47 @@ Round.prototype.round = function(skillName) {
 
     if(skillName === '毒性') {
       this.poisonTimes += 2;
+      this.dizzyTimes = -1;
+      this.frozenTimes = [];
+      this.fireTimes = 0;
 
-    } else if(skillName === '火焰') {
+    } else {
+      this.poisonTimes = this.poisonTimes > 0 ?
+                         this.poisonTimes - 1 : this.poisonTimes;
+    }
+
+
+   if(skillName === '火焰') {
       this.fireTimes += 2;
+      this.poisonTimes = 0;
+      this.dizzyTimes = -1;
+      this.frozenTimes = [];
 
-    } else if(skillName === '冰冻') {
+    } else {
+      this.fireTimes = this.fireTimes > 0 ?
+                       this.fireTimes-1 : this.fireTimes;
+    }
+
+
+    if(skillName === '冰冻') {
       this.frozenTimes.unshift(1);
+      this.dizzyTimes = -1;
+      this.fireTimes = 0;
+      this.poisonTimes = 0;
 
-    } else if(skillName === '击晕') {
+    }
+
+    if(skillName === '击晕') {
       this.dizzyTimes = this.dizzyTimes <= 0 ? 1 : this.dizzyTimes + 1 ;
+      this.fireTimes = 0;
+      this.poisonTimes = 0;
+      this.frozenTimes = [];
 
-    } else if(skillName === '致命一击') {
+    } else {
+      if(this.dizzyTimes > -1) { this.dizzyTimes --; }
+    }
+
+    if(skillName === '致命一击') {
       this.player.hp -= 2*value;
       value *= 3;
     }
@@ -53,6 +83,7 @@ Round.prototype.round = function(skillName) {
                      this.fireTimes-1 : this.fireTimes;
 
     if(this.dizzyTimes > -1) { this.dizzyTimes --; }
+
   }
 
   if(this.getPlayerHP() <= 0) {
