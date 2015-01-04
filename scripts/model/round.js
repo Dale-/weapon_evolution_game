@@ -78,23 +78,11 @@ Round.prototype.round = function(skillName) {
   }
 
   if(this.poisonTimes > 0) {
-    info += this.printPoinsonHurt();
+    info += this.printPoisonHurt();
   }
 
   if(this.fireTimes > 0) {
-    var fireHurtValue = Skill.all()[1].blood;
-    this.player.hp -= fireHurtValue;
-
-    if(this.fireTimes === 3) {
-      fireHurtValue *= 2;
-      this.fireTimes --;
-    }
-
-    info += this.getPlayerName() + '受到' +
-            fireHurtValue + '点' +
-            Skill.all()[1].name + '伤害,' +
-            this.getPlayerName() + '剩余生命：' +
-            this.getPlayerHP() + '\n';
+    info += this.printFireHurt();
   }
 
   if(this.player.isDiedText() !== ''){
@@ -126,17 +114,35 @@ Round.prototype.round = function(skillName) {
   return info;
 };
 
-Round.prototype.printPoinsonHurt = function() {
+Round.prototype.printPoisonHurt = function() {
+
   var poisonHurtValue = Skill.all()[0].blood;
   this.player.hp -= poisonHurtValue;
 
   if(this.poisonTimes === 3) {
+
     poisonHurtValue *= 2;
     this.poisonTimes --;
   }
 
   return this.getPlayerName() + '受到' + poisonHurtValue + '点' +
          Skill.all()[0].name + '伤害,' + this.getPlayerName() +
+         '剩余生命：' + this.getPlayerHP() + '\n';
+};
+
+Round.prototype.printFireHurt = function() {
+
+  var fireHurtValue = Skill.all()[1].blood;
+  this.player.hp -= fireHurtValue;
+
+  if(this.fireTimes === 3) {
+
+    fireHurtValue *= 2;
+    this.fireTimes --;
+  }
+
+  return this.getPlayerName() + '受到' + fireHurtValue + '点' +
+         Skill.all()[1].name + '伤害,' + this.getPlayerName() +
          '剩余生命：' + this.getPlayerHP() + '\n';
 };
 
