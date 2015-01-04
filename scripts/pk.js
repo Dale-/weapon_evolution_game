@@ -8,7 +8,7 @@ var Soldier = require('./model/soldier');
 (function PK() {
 
   var info = '';
-  var weapon = Weapon.all()[randomNumber()];
+  var weapon = Weapon.all()[2];
   var player = new Player('李四', 100, 1);
   var soldier = new Soldier('张三', 100, 2, weapon);
   var round = new Round(player, soldier);

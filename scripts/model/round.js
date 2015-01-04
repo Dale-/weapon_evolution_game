@@ -165,12 +165,12 @@ Round.prototype.roundDizzy = function() {
             this.getSoldierWeaponSkillInfo() + this.getPlayerName() +
             '剩余生命：' + this.getPlayerHP() + '\n';
 
-    this.dizzyTimes ++;
+    this.dizzyTimes = this.dizzyTimes <= 0 ? 1 : this.dizzyTimes + 1;
 
   } else {
 
     info += '//' + this.getSoldierName() + '进攻\n';
-    this.dizzyTimes = this.dizzyTimes > 0 ? this.dizzyTimes-1 : this.dizzyTimes;
+    this.dizzyTimes --;
   }
 
   if(this.getPlayerHP() <= 0) {
@@ -178,7 +178,7 @@ Round.prototype.roundDizzy = function() {
     return info;
   }
 
-  if(this.dizzyTimes > 0) {
+  if(this.dizzyTimes >= 0) {
 
     info += this.getPlayerName() +'晕倒了，无法攻击, 眩晕还剩：' +
             this.dizzyTimes + '轮\n';
