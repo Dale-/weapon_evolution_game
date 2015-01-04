@@ -4,7 +4,6 @@ var Skill = require('./skill.js');
 function Round(player, soldier) {
   this.player = player;
   this.soldier = soldier;
-  this.times = 1;
   this.dizzyTimes = -1;
   this.frozenTimes = [];
   this.fireTimes = 0;
@@ -24,7 +23,8 @@ Round.prototype.round = function(skillName) {
   if(skillName !== '') {
 
     if(skillName === '毒性') {
-      this.poisonTimes += 2;
+      this.poisonTimes = this.poisonTimes >= 1 ?
+                         this.poisonTimes + 1: this.poisonTimes + 2;
       this.dizzyTimes = -1;
       this.frozenTimes = [];
       this.fireTimes = 0;
@@ -35,14 +35,15 @@ Round.prototype.round = function(skillName) {
     }
 
    if(skillName === '火焰') {
-      this.fireTimes += 2;
+     this.fireTimes = this.fireTimes >= 1 ?
+                      this.fireTimes + 1: this.fireTimes + 2;
       this.poisonTimes = 0;
       this.dizzyTimes = -1;
       this.frozenTimes = [];
 
     } else {
       this.fireTimes = this.fireTimes > 0 ?
-                       this.fireTimes-1 : this.fireTimes;
+                       this.fireTimes - 1: this.fireTimes;
     }
 
     if(skillName === '冰冻') {
@@ -64,7 +65,7 @@ Round.prototype.round = function(skillName) {
     }
 
     if(skillName === '致命一击') {
-      this.player.hp -= 2*playerJumpBlood;
+      this.player.hp -= 2 * playerJumpBlood;
       playerJumpBlood *= 3;
     }
 
@@ -83,21 +84,35 @@ Round.prototype.round = function(skillName) {
 
   }
 
+  console.log(this.poisonTimes + '-----------------');
+
   if(this.poisonTimes > 0) {
-    this.player.hp -= Skill.all()[0].blood ;
+    var poisonHurtValue = Skill.all()[0].blood;
+    this.player.hp -= poisonHurtValue;
+
+    if(this.poisonTimes === 3) {
+      poisonHurtValue *= 2;
+      this.poisonTimes --;
+    }
 
     info += this.getPlayerName() + '受到' +
-            Skill.all()[0].blood + '点' +
+            poisonHurtValue + '点' +
             Skill.all()[0].name + '伤害,' +
             this.getPlayerName() + '剩余生命：' +
             this.getPlayerHP() + '\n';
   }
 
   if(this.fireTimes > 0) {
-    this.player.hp -= Skill.all()[1].blood ;
+    var fireHurtValue = Skill.all()[1].blood;
+    this.player.hp -= fireHurtValue;
+    
+    if(this.fireTimes === 3) {
+      fireHurtValue *= 2;
+      this.fireTimes --;
+    }
 
     info += this.getPlayerName() + '受到' +
-            Skill.all()[1].blood + '点' +
+            fireHurtValue + '点' +
             Skill.all()[1].name + '伤害,' +
             this.getPlayerName() + '剩余生命：' +
             this.getPlayerHP() + '\n';
