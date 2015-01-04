@@ -42,8 +42,7 @@ Round.prototype.round = function(skillName) {
       this.frozenTimes = [];
 
     } else {
-      this.fireTimes = this.fireTimes > 0 ?
-                       this.fireTimes - 1: this.fireTimes;
+      this.reduceFireTimes();
     }
 
     if(skillName === '冰冻') {
@@ -77,14 +76,11 @@ Round.prototype.round = function(skillName) {
     this.poisonTimes = this.poisonTimes > 0 ?
                        this.poisonTimes - 1 : this.poisonTimes;
 
-    this.fireTimes = this.fireTimes > 0 ?
-                     this.fireTimes-1 : this.fireTimes;
+    this.reduceFireTimes();
 
     if(this.dizzyTimes > -1) { this.dizzyTimes --; }
 
   }
-
-  console.log(this.poisonTimes + '-----------------');
 
   if(this.poisonTimes > 0) {
     var poisonHurtValue = Skill.all()[0].blood;
@@ -105,7 +101,7 @@ Round.prototype.round = function(skillName) {
   if(this.fireTimes > 0) {
     var fireHurtValue = Skill.all()[1].blood;
     this.player.hp -= fireHurtValue;
-    
+
     if(this.fireTimes === 3) {
       fireHurtValue *= 2;
       this.fireTimes --;
@@ -147,6 +143,11 @@ Round.prototype.round = function(skillName) {
   return info;
 };
 
+
+Round.prototype.reduceFireTimes = function() {
+  this.fireTimes = this.fireTimes > 0 ?
+                   this.fireTimes - 1: this.fireTimes;
+};
 
 Round.prototype.getSoldierAP = function() {
   return this.soldier.attackPoint;
