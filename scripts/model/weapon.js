@@ -1,18 +1,20 @@
 var Skill = require('./skill.js');
 
-function Weapon(name, attackPoint, skill) {
+function Weapon(name, attackPoint, skills) {
   this.name = name;
   this.attackPoint = attackPoint;
-  this.skill = skill;
+  this.skills = skills;
 }
 
 Weapon.all = function() {
   return [
-          new Weapon('利剑', 3, Skill.all()[4]),
-          new Weapon('火焰剑', 2, Skill.all()[1]),
-          new Weapon('晕锤', 4, Skill.all()[3]),
-          new Weapon('寒冰剑', 4, Skill.all()[2]),
-          new Weapon('优质毒剑', 4, Skill.all()[0]),
+          new Weapon('晕锤', 4, [Skill.all()[3]]),
+          new Weapon('利剑', 3, [Skill.all()[4], Skill.all()[0]]),
+          new Weapon('火焰剑', 2, [Skill.all()[1], Skill.all()[4]]),
+          new Weapon('优质毒剑', 4, [Skill.all()[0], Skill.all()[4]]),
+          new Weapon('寒冰剑', 4, [Skill.all()[2],
+                                  Skill.all()[4], Skill.all()[0]])
+
          ];
 };
 
