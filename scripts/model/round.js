@@ -78,19 +78,7 @@ Round.prototype.round = function(skillName) {
   }
 
   if(this.poisonTimes > 0) {
-    var poisonHurtValue = Skill.all()[0].blood;
-    this.player.hp -= poisonHurtValue;
-
-    if(this.poisonTimes === 3) {
-      poisonHurtValue *= 2;
-      this.poisonTimes --;
-    }
-
-    info += this.getPlayerName() + '受到' +
-            poisonHurtValue + '点' +
-            Skill.all()[0].name + '伤害,' +
-            this.getPlayerName() + '剩余生命：' +
-            this.getPlayerHP() + '\n';
+    info += this.printPoinsonHurt();
   }
 
   if(this.fireTimes > 0) {
@@ -136,6 +124,20 @@ Round.prototype.round = function(skillName) {
     }
 
   return info;
+};
+
+Round.prototype.printPoinsonHurt = function() {
+  var poisonHurtValue = Skill.all()[0].blood;
+  this.player.hp -= poisonHurtValue;
+
+  if(this.poisonTimes === 3) {
+    poisonHurtValue *= 2;
+    this.poisonTimes --;
+  }
+
+  return this.getPlayerName() + '受到' + poisonHurtValue + '点' +
+         Skill.all()[0].name + '伤害,' + this.getPlayerName() +
+         '剩余生命：' + this.getPlayerHP() + '\n';
 };
 
 Round.prototype.addPoisonTimes = function() {
