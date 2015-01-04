@@ -13,4 +13,12 @@ Player.prototype.attack = function(soldier) {
   return '//' + this.name + '进攻';
 };
 
+Player.prototype.isDiedText = function() {
+  if(this.hp <= 0) {
+    return '\n' + this.name + '被打死了';
+  } else {
+    return '';
+  }
+};
+
 module.exports = Player;

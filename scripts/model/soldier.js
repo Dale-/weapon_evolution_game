@@ -26,6 +26,14 @@ Soldier.prototype.attackText = function(commonPeople, skillName, value) {
   return info;
 };
 
+Soldier.prototype.isDiedText = function() {
+  if(this.hp <= 0) {
+    return '\n' + this.name + '被打死了';
+  } else {
+    return '';
+  }
+};
+
 Soldier.prototype.getWeaponAP = function() {
   return this.weapon.attackPoint;
 };

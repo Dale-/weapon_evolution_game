@@ -86,11 +86,6 @@ Round.prototype.round = function(skillName) {
 
   }
 
-  if(this.getPlayerHP() <= 0) {
-    info += '\n' + this.getPlayerName() + '被打死了';
-    return info;
-  }
-
   if(this.poisonTimes > 0) {
     this.player.hp -= Skill.all()[0].blood ;
 
@@ -111,6 +106,11 @@ Round.prototype.round = function(skillName) {
             this.getPlayerHP() + '\n';
   }
 
+  if(this.player.isDiedText() !== ''){
+    info += this.player.isDiedText();
+    return info;
+  }
+
   if(this.frozenTimes !== null &&
     this.frozenTimes[this.frozenTimes.length - 1] === 3) {
 
@@ -128,10 +128,10 @@ Round.prototype.round = function(skillName) {
       info += '//' + this.getPlayerName() + '进攻\n';
     }
 
-  if(this.getSoldierHP() <= 0) {
-    info += '\n' + this.getSoldierName() + '被打死了';
-    return info;
-  }
+    if(this.soldier.isDiedText() !== ''){
+      info += this.soldier.isDiedText();
+      return info;
+    }
 
   return info;
 };

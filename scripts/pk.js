@@ -12,7 +12,7 @@ var Random = require('./model/random');
 
   var info = '';
   var weapon = Weapon.all()[Random.weapon()];
-  var player = new Player('李四', 80, 1);
+  var player = new Player('李四', 80, 10);
   var soldier = new Soldier('张三', 80, 2, weapon);
   var round = new Round(player, soldier);
 
