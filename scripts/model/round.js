@@ -11,11 +11,11 @@ function Round(player, soldier) {
   this.poisonTimes = 0;
 }
 
-Round.prototype.round = function() {
+Round.prototype.round = function(skillName) {
   var info = '';
 
-  var is = Math.random() < 0.4 ? true : false;
-  var skillName = is ? '击晕' : '';
+  // var is = Math.random() < 0.4 ? true : false;
+  // var skillName = is ? '击晕' : '';
 
   if(this.frozenTimes !== null) {
     this.frozenTimes = _.map(this.frozenTimes,
