@@ -1,11 +1,8 @@
+jest.dontMock('lodash');
 jest.dontMock('../../model/soldier.js');
 jest.dontMock('../../model/weapon.js');
 jest.dontMock('../../model/skill.js');
-// jest.dontMock('../../model/defense-tool.js');
-// jest.dontMock('../../model/common-people.js');
 jest.dontMock('../../model/player.js');
-jest.dontMock('lodash');
-
 
 describe('Soldier', function() {
 

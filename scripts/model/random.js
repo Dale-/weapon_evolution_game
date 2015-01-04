@@ -1,5 +1,3 @@
-var Skill = require('./skill.js');
-
 function Random() {
 }
 
@@ -34,7 +32,7 @@ Random.skillName = function(weapon) {
       index = i - 1;
     }
   }
-
+  
   if(index === weapon.skills.length) {
     return '';
   } else {

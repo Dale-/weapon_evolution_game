@@ -14,9 +14,6 @@ function Round(player, soldier) {
 Round.prototype.round = function(skillName) {
   var info = '';
 
-  // var is = Math.random() < 0.4 ? true : false;
-  // var skillName = is ? '击晕' : '';
-
   if(this.frozenTimes !== null) {
     this.frozenTimes = _.map(this.frozenTimes,
       function(num) { return num + 1; });
@@ -44,12 +41,8 @@ Round.prototype.round = function(skillName) {
       value *= 3;
     }
 
-    info += '战士' + this.getSoldierName() +
-            '用' + this.getSoldierWeaponName() +
-            '攻击了普通人' + this.getPlayerName() + '，' +
-            this.getPlayerName() + '受到了' + value + '点伤害，' +
-            this.getPlayerName() + this.getSoldierWeaponSkillInfo() +
-            this.getPlayerName() + '剩余生命：' + this.getPlayerHP() + '\n';
+    info += this.soldier.attackText(this.player, skillName, value);
+
   } else {
     info += '//' + this.getSoldierName() + '进攻\n';
 
