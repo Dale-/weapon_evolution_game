@@ -11,11 +11,8 @@ Weapon.all = function() {
           new Weapon('晕锤', 4, [Skill.all()[3], Skill.all()[0]]),
           new Weapon('火焰剑', 2, [Skill.all()[1], Skill.all()[4]]),
           new Weapon('优质毒剑', 4, [Skill.all()[0], Skill.all()[4]]),
-          new Weapon('利剑', 3, [Skill.all()[4],
-                                Skill.all()[0]], Skill.all()[1]),
-          new Weapon('寒冰剑', 4, [Skill.all()[2],
-                                  Skill.all()[4], Skill.all()[0]])
-
+          new Weapon('利剑', 3, [Skill.all()[4], Skill.all()[0]], Skill.all()[1]),
+          new Weapon('寒冰剑', 4, [Skill.all()[2], Skill.all()[4], Skill.all()[0]])
          ];
 };
 

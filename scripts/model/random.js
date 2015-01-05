@@ -22,6 +22,7 @@ Random.weapon = function() {
 };
 
 Random.skillName = function(weapon) {
+  
   var size = weapon.skills.length + 1;
   var region = 1 / size;
   var random = Math.random();
@@ -32,7 +33,7 @@ Random.skillName = function(weapon) {
       index = i - 1;
     }
   }
-  
+
   if(index === weapon.skills.length) {
     return '';
   } else {

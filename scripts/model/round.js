@@ -43,7 +43,7 @@ Round.prototype.round = function(skillName) {
     }
 
     if(skillName === '冰冻') {
-      this.frozenTimes.unshift(1);
+    var a =  this.frozenTimes.unshift(1);
       this.dizzyTimes = -1;
       this.fireTimes = 0;
       this.poisonTimes = 0;
