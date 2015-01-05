@@ -13,7 +13,7 @@ Soldier.prototype = Object.create(Player.prototype);
 Soldier.prototype.constructor = Soldier;
 
 Soldier.prototype.attack = function(player) {
-  
+
   var playerJumpBlood = this.attackPoint + this.getWeaponAP();
   player.hp -= playerJumpBlood;
 
