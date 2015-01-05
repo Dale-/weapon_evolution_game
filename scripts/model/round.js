@@ -24,9 +24,7 @@ Round.prototype.round = function(skillName) {
 
     if(skillName === '毒性') {
       this.addPoisonTimes();
-      this.dizzyTimes = -1;
-      this.frozenTimes = [];
-      this.fireTimes = 0;
+      this.initEffectTimes(this.poisonTimes, [], 0, -1);
 
     } else {
       this.reducePoisonTimes();
@@ -34,27 +32,20 @@ Round.prototype.round = function(skillName) {
 
     if(skillName === '火焰') {
       this.addFireTimes();
-      this.poisonTimes = 0;
-      this.dizzyTimes = -1;
-      this.frozenTimes = [];
+      this.initEffectTimes(0, [], this.fireTimes, -1);
 
     } else {
       this.reduceFireTimes();
     }
 
     if(skillName === '冰冻') {
-    var a =  this.frozenTimes.unshift(1);
-      this.dizzyTimes = -1;
-      this.fireTimes = 0;
-      this.poisonTimes = 0;
-
+      this.frozenTimes.unshift(1);
+      this.initEffectTimes(0, this.frozenTimes, 0, -1);
     }
 
     if(skillName === '击晕') {
       this.dizzyTimes = this.dizzyTimes <= 0 ? 1 : this.dizzyTimes + 1 ;
-      this.fireTimes = 0;
-      this.poisonTimes = 0;
-      this.frozenTimes = [];
+      this.initEffectTimes(0, [], 0, this.dizzyTimes);
 
     } else {
       if(this.dizzyTimes > -1) { this.dizzyTimes --; }
@@ -64,7 +55,6 @@ Round.prototype.round = function(skillName) {
       this.player.hp -= 2 * playerJumpBlood;
       playerJumpBlood *= 3;
     }
-
     info += this.soldier.attackText(this.player, skillName, playerJumpBlood);
 
   } else {
@@ -74,9 +64,7 @@ Round.prototype.round = function(skillName) {
     this.reduceFireTimes();
 
     if(this.dizzyTimes > -1) { this.dizzyTimes --; }
-
   }
-
   if(this.poisonTimes > 0) {
     info += this.printPoisonHurt();
   }
@@ -112,6 +100,14 @@ Round.prototype.round = function(skillName) {
     }
 
   return info;
+};
+
+Round.prototype.initEffectTimes = function(poison, frozen, fire, dizzy) {
+
+  this.fireTimes = fire;
+  this.dizzyTimes = dizzy;
+  this.poisonTimes = poison;
+  this.frozenTimes = frozen;
 };
 
 Round.prototype.printPoisonHurt = function() {
