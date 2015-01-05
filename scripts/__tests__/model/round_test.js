@@ -38,22 +38,4 @@ describe('Round', function() {
       expect(result).toBe(expectText);
     });
   });
-
-  // describe('.roundCtriticalStrike', function() {
-  //
-  //   it('it should be return correct string', function() {
-  //
-  //     var soldier = new Soldier('张三', 20, 2, Weapon.all()[0]);
-  //     var player = new Player('李四', 20, 1);
-  //     var round = new Round(player, soldier);
-  //     var result = round.roundCtriticalStrike();
-  //
-  //     var expectText = '战士张三用利剑攻击了普通人李四，' +
-  //                      '张三发动了致命一击，李四受到了15点伤害，' +
-  //                      '李四剩余生命：5\n//李四进攻\n';
-  //
-  //     expect(result).toBe(expectText);
-  //   });
-  // });
-
 });

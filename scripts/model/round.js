@@ -2,7 +2,7 @@ var _ = require('lodash');
 var Skill = require('./skill.js');
 
 function Round(player, soldier) {
-  
+
   this.player = player;
   this.soldier = soldier;
   this.dizzyTimes = -1;
@@ -49,7 +49,7 @@ Round.prototype.round = function(skillName) {
       this.initEffectTimes(0, [], 0, this.dizzyTimes);
 
     } else {
-      if(this.dizzyTimes > -1) { this.dizzyTimes --; }
+      this.reduceDizzyTimes();
     }
 
     if(skillName === '致命一击') {
@@ -63,8 +63,7 @@ Round.prototype.round = function(skillName) {
 
     this.reducePoisonTimes();
     this.reduceFireTimes();
-
-    if(this.dizzyTimes > -1) { this.dizzyTimes --; }
+    this.reduceDizzyTimes();
   }
   if(this.poisonTimes > 0) {
     info += this.printPoisonHurt();
@@ -153,6 +152,12 @@ Round.prototype.printFireHurt = function() {
 Round.prototype.addPoisonTimes = function() {
   this.poisonTimes = this.poisonTimes >= 1 ?
                      this.poisonTimes + 1: this.poisonTimes + 2;
+};
+
+Round.prototype.reduceDizzyTimes = function() {
+  if(this.dizzyTimes > -1) {
+     this.dizzyTimes --;
+  }
 };
 
 Round.prototype.reducePoisonTimes = function() {
