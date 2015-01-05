@@ -81,14 +81,12 @@ Round.prototype.round = function(skillName) {
   if(this.frozenTimes !== null &&
      this.frozenTimes[this.frozenTimes.length - 1] === 3) {
 
-      info += this.getPlayerName() + '冻得直哆嗦，没有击中' +
-      this.getSoldierName() + '\n';
-      this.frozenTimes.pop();
+      info += this.printFrozenText();
 
     } else if(this.dizzyTimes >= 0) {
 
       info += this.getPlayerName() +'晕倒了，无法攻击, 眩晕还剩：' +
-      this.dizzyTimes + '轮\n';
+              this.dizzyTimes + '轮\n';
 
     } else {
       info += this.player.attack(this.soldier);
@@ -108,6 +106,14 @@ Round.prototype.initEffectTimes = function(poison, frozen, fire, dizzy) {
   this.dizzyTimes = dizzy;
   this.poisonTimes = poison;
   this.frozenTimes = frozen;
+};
+
+Round.prototype.printFrozenText = function() {
+
+  this.frozenTimes.pop();
+
+  return this.getPlayerName() + '冻得直哆嗦，没有击中' +
+         this.getSoldierName() + '\n';
 };
 
 Round.prototype.printPoisonHurt = function() {
