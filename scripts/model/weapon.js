@@ -3,7 +3,7 @@ var Skill = require('./skill.js');
 function Weapon(name, attackPoint, skills) {
   this.name = name;
   this.attackPoint = attackPoint;
-  this.skills = skills;
+  this.skills = skills || [];
 }
 
 Weapon.all = function() {

@@ -5,6 +5,7 @@ function Player(name, hp, attackPoint) {
   this.name = name;
   this.hp = hp;
   this.attackPoint = attackPoint;
+  this.status = {};
 }
 
 Player.prototype.attack = function(soldier) {
